@@ -2,13 +2,35 @@ import { AuthBindings } from "@refinedev/core";
 
 export const TOKEN_KEY = "refine-auth";
 
+const mockUsers = [{ email: "john@mail.com" }, { email: "jane@mail.com" }];
+
 export const authProvider: AuthBindings = {
-  login: async ({ username, email, password }) => {
-    if ((username || email) && password) {
-      localStorage.setItem(TOKEN_KEY, username);
+  register: async ({ email }) => {
+    const user = mockUsers.find((user) => user.email === email);
+
+    if (user) {
+      return {
+        success: false,
+        error: {
+          name: "Register Error",
+          message: "User already exists",
+        },
+      };
+    }
+
+    mockUsers.push({ email });
+
+    return {
+      success: true,
+      redirectTo: "/login",
+    };
+  },
+  login: async ({ siteid, email, password }) => {
+    if (siteid && email && password) {
+      localStorage.setItem(TOKEN_KEY, email);
       return {
         success: true,
-        redirectTo: "/",
+        redirectTo: "/login",
       };
     }
 
@@ -16,7 +38,7 @@ export const authProvider: AuthBindings = {
       success: false,
       error: {
         name: "LoginError",
-        message: "Invalid username or password",
+        message: "Invalid siteid, email or password",
       },
     };
   },
