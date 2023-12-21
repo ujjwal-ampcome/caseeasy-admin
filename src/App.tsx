@@ -43,9 +43,9 @@ function App() {
                 }}
               >
                 <Routes>
-                  {/* <Route index element={<Login />} />
-                   */}
-                  <Route
+                  <Route index element={<Login />} />
+
+                  {/* <Route
                     element={
                       <Authenticated key="auth-pages" fallback={<Outlet />}>
                         <NavigateToResource resource="/" />
@@ -53,7 +53,7 @@ function App() {
                     }
                   >
                     <Route path="/login" element={<Login />} />
-                  </Route>
+                  </Route> */}
                 </Routes>
                 <RefineKbar />
                 <UnsavedChangesNotifier />
