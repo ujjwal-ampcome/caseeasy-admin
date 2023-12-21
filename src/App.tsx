@@ -1,5 +1,5 @@
-import { GitHubBanner, Refine, WelcomePage } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import { Authenticated, Refine } from "@refinedev/core";
+import { DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import { useNotificationProvider } from "@refinedev/antd";
@@ -8,21 +8,24 @@ import "@refinedev/antd/dist/reset.css";
 import dataProvider, { GraphQLClient } from "@refinedev/graphql";
 import routerBindings, {
   DocumentTitleHandler,
+  NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { App as AntdApp } from "antd";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { authProvider } from "./authProvider";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { ColorModeContextProvider } from "./contexts/color-mode";
-const API_URL = "https://your-graphql-url/graphql";
+import { authProvider } from "./authProvider";
+import { Login } from "./pages/login";
+const API_URL = "https://wincase-dev-api.ampcome.app/v1/graphql";
 
 const client = new GraphQLClient(API_URL);
 const gqlDataProvider = dataProvider(client);
 
+// console.log("gqlDataProvider", gqlDataProvider);
+
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>
@@ -40,13 +43,22 @@ function App() {
                 }}
               >
                 <Routes>
-                  <Route index element={<WelcomePage />} />
+                  {/* <Route index element={<Login />} />
+                   */}
+                  <Route
+                    element={
+                      <Authenticated key="auth-pages" fallback={<Outlet />}>
+                        <NavigateToResource resource="/" />
+                      </Authenticated>
+                    }
+                  >
+                    <Route path="/login" element={<Login />} />
+                  </Route>
                 </Routes>
                 <RefineKbar />
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
-              <DevtoolsPanel />
             </DevtoolsProvider>
           </AntdApp>
         </ColorModeContextProvider>
