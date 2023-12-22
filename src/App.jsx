@@ -18,7 +18,7 @@ import { ThemedLayoutV2, useNotificationProvider } from "@refinedev/antd";
 import { CustomSider } from "./components";
 import { Login } from "./pages/login";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <NhostProvider nhost={nhost}>
@@ -74,6 +74,6 @@ function App() {
       </NhostProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
