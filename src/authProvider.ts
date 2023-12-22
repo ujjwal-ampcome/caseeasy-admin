@@ -1,47 +1,58 @@
+import nhost from "./utility/nhost";
 import { AuthBindings } from "@refinedev/core";
 
 export const TOKEN_KEY = "refine-auth";
 
-const mockUsers = [{ email: "john@mail.com" }, { email: "jane@mail.com" }];
-
 export const authProvider: AuthBindings = {
-  register: async ({ email }) => {
-    const user = mockUsers.find((user) => user.email === email);
+  register: async (props) => {
+    const value = await nhost.auth.signUp({
+      email: props.email,
+      password: props.password,
+      options: {
+        defaultRole: "user",
+        allowedRoles: ["user"],
+      },
+    });
 
-    if (user) {
+    if (value.error) {
       return {
         success: false,
         error: {
-          name: "Register Error",
-          message: "User already exists",
+          message: value.error.message,
+          name: "Sign up error",
         },
       };
     }
-
-    mockUsers.push({ email });
-
     return {
       success: true,
       redirectTo: "/login",
     };
   },
+
   login: async ({ siteid, email, password }) => {
-    if (siteid && email && password) {
-      localStorage.setItem(TOKEN_KEY, email);
+    let value;
+    if ((siteid || email) && password) {
+      value = await nhost.auth.signIn({
+        email,
+        password,
+      });
+    }
+    if (value?.session) {
       return {
         success: true,
-        redirectTo: "/login",
+        redirectTo: "/",
+      };
+    } else {
+      return {
+        success: false,
+        error: {
+          name: "LoginError",
+          message: "Invalid siteid, email or password",
+        },
       };
     }
-
-    return {
-      success: false,
-      error: {
-        name: "LoginError",
-        message: "Invalid siteid, email or password",
-      },
-    };
   },
+
   logout: async () => {
     localStorage.removeItem(TOKEN_KEY);
     return {
@@ -49,6 +60,7 @@ export const authProvider: AuthBindings = {
       redirectTo: "/login",
     };
   },
+
   check: async () => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (token) {
@@ -62,7 +74,9 @@ export const authProvider: AuthBindings = {
       redirectTo: "/login",
     };
   },
+
   getPermissions: async () => null,
+
   getIdentity: async () => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (token) {
@@ -74,6 +88,7 @@ export const authProvider: AuthBindings = {
     }
     return null;
   },
+
   onError: async (error) => {
     console.error(error);
     return { error };
