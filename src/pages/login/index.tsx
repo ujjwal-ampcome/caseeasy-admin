@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthPage, useModal } from "@refinedev/antd";
+import { useModal } from "@refinedev/antd";
 import { useLogin } from "@refinedev/core";
 import {
   Col,
@@ -24,12 +24,6 @@ export const Login: React.FC = () => {
   const [form] = Form.useForm<ILoginForm>();
   const { mutate: login } = useLogin<ILoginForm>();
   return (
-    // <AuthPage
-    //   type="login"
-    //   formProps={{
-    //     initialValues: { email: "demo@refine.dev", password: "demodemo" },
-    //   }}
-    // />
     <Layout>
       <Row>
         <Col span={16} className="main-col-1">
@@ -76,7 +70,6 @@ export const Login: React.FC = () => {
             form={form}
             onFinish={(values) => {
               login(values);
-              // console.log(values);
             }}
             requiredMark={false}
             initialValues={{
@@ -86,7 +79,7 @@ export const Login: React.FC = () => {
             <Space direction="vertical" style={{ display: "flex" }}>
               <Space direction="vertical" className="main-col-2-space">
                 <Text className="main-col-2-text">Enter your Site ID</Text>
-                <Form.Item name="siteid" rules={[{ required: true }]}>
+                <Form.Item name="siteid" rules={[{ required: false }]}>
                   <Input size="large" placeholder="CCP20232986" />
                 </Form.Item>
               </Space>
