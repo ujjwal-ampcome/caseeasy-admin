@@ -40,7 +40,7 @@ export const authProvider: AuthBindings = {
     if (value?.session) {
       return {
         success: true,
-        redirectTo: "/",
+        redirectTo: "/home",
       };
     } else {
       return {
