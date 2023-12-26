@@ -7,6 +7,7 @@ import {
   useLogout,
   useMenu,
   useWarnAboutChange,
+  useNavigation,
 } from "@refinedev/core";
 import { Link } from "react-router-dom";
 import { Sider, ThemedTitleV2 } from "@refinedev/antd";
@@ -16,6 +17,7 @@ import {
   UnorderedListOutlined,
   RightOutlined,
   LeftOutlined,
+  DashboardOutlined,
 } from "@ant-design/icons";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
@@ -23,11 +25,12 @@ const { useToken } = theme;
 
 export const CustomSider: typeof Sider = ({ render }) => {
   const { token } = useToken();
+  const translate = useTranslate();
+  const { push } = useNavigation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const isExistAuthentication = useIsExistAuthentication();
   const { warnWhen, setWarnWhen } = useWarnAboutChange();
   const { mutate: mutateLogout } = useLogout();
-  const translate = useTranslate();
   const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
   const { SubMenu } = Menu;
 
@@ -200,7 +203,19 @@ export const CustomSider: typeof Sider = ({ render }) => {
           }
         }}
       >
-        {renderSider()}
+        {/* {renderSider()} */}
+        <Menu.Item
+          key="dashboard"
+          icon={<DashboardOutlined />}
+          onClick={() => {
+            push("/dashboard");
+          }}
+          style={{
+            fontWeight: selectedKey === "/dashboard" ? "bold" : "normal",
+          }}
+        >
+          Home
+        </Menu.Item>
       </Menu>
     </AntdLayout.Sider>
   );

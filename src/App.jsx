@@ -1,7 +1,6 @@
 import React from "react";
 import routerBindings, {
   DocumentTitleHandler,
-  NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import nhost from "./utility/nhost";
@@ -62,7 +61,9 @@ function App() {
                         </Authenticated>
                       }
                     >
-                      <Route path="/dashboard" index element={<Dashboard />} />
+                      <Route path="/dashboard">
+                        <Route index element={<Dashboard />} />
+                      </Route>
                     </Route>
 
                     <Route>
