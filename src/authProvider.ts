@@ -37,10 +37,11 @@ export const authProvider: AuthBindings = {
         password,
       });
     }
+
     if (value?.session) {
       return {
         success: true,
-        redirectTo: "/home",
+        redirectTo: "/dashboard",
       };
     } else {
       return {
@@ -62,16 +63,16 @@ export const authProvider: AuthBindings = {
   },
 
   check: async () => {
-    const token = localStorage.getItem(TOKEN_KEY);
-    if (token) {
-      return {
-        authenticated: true,
-      };
-    }
+    // const token = localStorage.getItem(TOKEN_KEY);
+    // if (token) {
+    //   return {
+    //     authenticated: true,
+    //   };
+    // }
 
     return {
-      authenticated: false,
-      redirectTo: "/login",
+      authenticated: true,
+      redirectTo: "/dashboard",
     };
   },
 

@@ -1,6 +1,5 @@
 import React from "react";
 import routerBindings, {
-  CatchAllNavigate,
   DocumentTitleHandler,
   NavigateToResource,
   UnsavedChangesNotifier,
@@ -16,11 +15,7 @@ import { Authenticated, Refine } from "@refinedev/core";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import {
-  ErrorComponent,
-  ThemedLayoutV2,
-  useNotificationProvider,
-} from "@refinedev/antd";
+import { ThemedLayoutV2, useNotificationProvider } from "@refinedev/antd";
 import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
 import { Login } from "./pages/login";
@@ -41,7 +36,7 @@ function App() {
                   authProvider={authProvider}
                   resources={[
                     {
-                      name: "home",
+                      name: "dashboard",
                     },
                   ]}
                   options={{
@@ -55,9 +50,8 @@ function App() {
                     <Route
                       element={
                         <Authenticated
-                          key="authenticated-inner"
+                          redirectOnFail={"/login"}
                           appendCurrentPathToQuery={false}
-                          fallback={<CatchAllNavigate to="/login" />}
                         >
                           <ThemedLayoutV2
                             Sider={CustomSider}
@@ -68,20 +62,12 @@ function App() {
                         </Authenticated>
                       }
                     >
-                      <Route path="/home" element={<Dashboard />} />
-                      <Route path="*" element={<ErrorComponent />} />
+                      <Route path="/dashboard" index element={<Dashboard />} />
                     </Route>
-                    <Route
-                      element={
-                        <Authenticated
-                          key="authenticated-outer"
-                          fallback={<Outlet />}
-                        >
-                          <NavigateToResource />
-                        </Authenticated>
-                      }
-                    >
+
+                    <Route>
                       <Route path="/login" element={<Login />} />
+                      <Route path="*" element={<Login />} />
                     </Route>
                   </Routes>
                   <RefineKbar />
