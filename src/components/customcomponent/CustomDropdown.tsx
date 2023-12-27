@@ -1,6 +1,5 @@
 import React from "react";
 import type { MenuProps } from "antd";
-import { ICustomDropdown } from "../interfaces";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Input, Typography } from "antd";
 
