@@ -192,7 +192,7 @@ export const CustomSider: typeof Sider = ({ render }) => {
           collapsed={collapsed}
           text={"Wincase CRM"}
           icon={
-            <img style={{ width: 25 }} src={WincaseIcon} alt="Wincase Icon" />
+            <img style={{ width: 15 }} src={WincaseIcon} alt="Wincase Icon" />
           }
         />
       </div>
