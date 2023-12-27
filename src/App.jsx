@@ -1,6 +1,6 @@
 import React from "react";
 import routerBindings, {
-  DocumentTitleHandler,
+  NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import nhost from "./utility/nhost";
@@ -14,7 +14,11 @@ import { Authenticated, Refine } from "@refinedev/core";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { ThemedLayoutV2, useNotificationProvider } from "@refinedev/antd";
+import {
+  ErrorComponent,
+  ThemedLayoutV2,
+  useNotificationProvider,
+} from "@refinedev/antd";
 import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
 import { Login } from "./pages/login";
@@ -61,19 +65,21 @@ function App() {
                         </Authenticated>
                       }
                     >
-                      <Route path="/dashboard">
-                        <Route index element={<Dashboard />} />
-                      </Route>
+                      <Route
+                        index
+                        element={<NavigateToResource resource="dashboard" />}
+                      />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="*" element={<ErrorComponent />} />
                     </Route>
 
                     <Route>
                       <Route path="/login" element={<Login />} />
-                      <Route path="*" element={<Login />} />
+                      {/* <Route path="*" element={<Login />} /> */}
                     </Route>
                   </Routes>
                   <RefineKbar />
                   <UnsavedChangesNotifier />
-                  <DocumentTitleHandler />
                 </Refine>
               </DevtoolsProvider>
             </AntdApp>

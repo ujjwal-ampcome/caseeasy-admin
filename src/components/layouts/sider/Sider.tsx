@@ -20,6 +20,7 @@ import {
   DashboardOutlined,
 } from "@ant-design/icons";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
+import WincaseIcon from "./../../../../public/wincase.ico";
 
 const { useToken } = theme;
 
@@ -187,7 +188,13 @@ export const CustomSider: typeof Sider = ({ render }) => {
           fontSize: "14px",
         }}
       >
-        <ThemedTitleV2 collapsed={collapsed} />
+        <ThemedTitleV2
+          collapsed={collapsed}
+          text={"Wincase CRM"}
+          icon={
+            <img style={{ width: 25 }} src={WincaseIcon} alt="Wincase Icon" />
+          }
+        />
       </div>
       <Menu
         defaultOpenKeys={defaultOpenKeys}
