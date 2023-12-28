@@ -79,13 +79,9 @@ export const authProvider: AuthBindings = {
   getPermissions: async () => null,
 
   getIdentity: async () => {
-    const token = localStorage.getItem(TOKEN_KEY);
-    if (token) {
-      return {
-        id: 1,
-        name: "John Doe",
-        avatar: "https://i.pravatar.cc/300",
-      };
+    const user = nhost.auth.getUser();
+    if (user) {
+      return user;
     }
     return null;
   },
