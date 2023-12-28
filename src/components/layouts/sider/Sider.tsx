@@ -20,7 +20,7 @@ import {
   DashboardOutlined,
 } from "@ant-design/icons";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
-import WincaseIcon from "./../../../../public/wincase.ico";
+import WincaseIcon from "/wincase.ico";
 
 const { useToken } = theme;
 

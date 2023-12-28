@@ -79,9 +79,9 @@ export const authProvider: AuthBindings = {
   getPermissions: async () => null,
 
   getIdentity: async () => {
-    const user = nhost.auth.getUser();
-    if (user) {
-      return user;
+    const data = nhost.auth.getUser();
+    if (data) {
+      return data;
     }
     return null;
   },
