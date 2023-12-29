@@ -1,14 +1,14 @@
 import React from "react";
-import { Avatar, Col, Row, Space } from "antd";
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import { Col, Row, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import { HeadHelp } from "./components/Help";
 import { HeadTimer } from "./components/Timer";
 import { HeadActivity } from "./components/TrackActivity";
 import { HeadContact } from "./components/Contact";
 import { HeadDrawer } from "./components/Drawer";
-import CustomDropdown from "../../customcomponent/CustomDropdown";
-import "./styles.less";
+import CustomDropdown from "./../../custom-component/CustomDropdown";
 import { HeadAvatar } from "./components/Avatar";
+import "./styles.less";
 
 const props = {
   name: "Portals",
