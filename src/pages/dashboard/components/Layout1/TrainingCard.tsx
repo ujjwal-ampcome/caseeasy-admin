@@ -7,7 +7,7 @@ const { Title, Text } = Typography;
 
 export const TrainingCard: React.FC = () => {
   return (
-    <Card style={{ width: 400 }} id="training-card">
+    <Card id="training-card">
       <Row>
         <Title level={5}>Schedule Training</Title>
       </Row>
