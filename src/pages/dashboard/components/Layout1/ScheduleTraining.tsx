@@ -1,5 +1,5 @@
-import { Col, Row, Space } from "antd";
 import React from "react";
+import { Col, Row, Space } from "antd";
 import { TrainingCard } from "./TrainingCard";
 
 export const ScheduleTraining: React.FC = () => {

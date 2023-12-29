@@ -3,9 +3,9 @@ import { Col, Row, Space, Typography } from "antd";
 import { useGetIdentity } from "@refinedev/core";
 import { ScheduleTraining } from "./components/layout1/ScheduleTraining";
 import { LatestNews } from "./components/layout2/LatestNews";
-import "./styles.less";
 import { Partners } from "./components/layout3/Partners";
 import { ExpressEntry } from "./components/layout3/ExpressEntry";
+import "./styles.less";
 
 const { Title } = Typography;
 
