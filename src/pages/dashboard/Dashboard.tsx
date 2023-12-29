@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row, Space, Typography } from "antd";
 import { useGetIdentity } from "@refinedev/core";
-import { ScheduleTraining } from "./components/layout1/ScheduleTraining";
-import { LatestNews } from "./components/layout2/LatestNews";
-import { Partners } from "./components/layout3/Partners";
-import { ExpressEntry } from "./components/layout3/ExpressEntry";
+import { ScheduleTraining } from "./Dcomponents/layout1/ScheduleTraining";
+import { LatestNews } from "./Dcomponents/layout2/LatestNews";
+import { Partners } from "./Dcomponents/layout3/Partners";
+import { ExpressEntry } from "./Dcomponents/layout3/ExpressEntry";
 import "./styles.less";
 
 const { Title } = Typography;
