@@ -40,6 +40,7 @@ function App() {
                   resources={[
                     {
                       name: "dashboard",
+                      list: "/dashboard",
                     },
                   ]}
                   options={{
@@ -65,17 +66,13 @@ function App() {
                         </Authenticated>
                       }
                     >
-                      <Route
-                        index
-                        element={<NavigateToResource resource="dashboard" />}
-                      />
+                      <Route index element={<NavigateToResource />} />
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="*" element={<ErrorComponent />} />
                     </Route>
 
                     <Route>
                       <Route path="/login" element={<Login />} />
-                      {/* <Route path="*" element={<Login />} /> */}
                     </Route>
                   </Routes>
                   <RefineKbar />

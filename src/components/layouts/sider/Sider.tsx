@@ -17,7 +17,7 @@ import {
   UnorderedListOutlined,
   RightOutlined,
   LeftOutlined,
-  DashboardOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 import WincaseIcon from "/wincase.ico";
@@ -212,8 +212,8 @@ export const CustomSider: typeof Sider = ({ render }) => {
       >
         {/* {renderSider()} */}
         <Menu.Item
-          key="dashboard"
-          icon={<DashboardOutlined />}
+          key="/dashboard"
+          icon={<HomeOutlined />}
           onClick={() => {
             push("/dashboard");
           }}
@@ -221,7 +221,7 @@ export const CustomSider: typeof Sider = ({ render }) => {
             fontWeight: selectedKey === "/dashboard" ? "bold" : "normal",
           }}
         >
-          Home
+          Dashboard
         </Menu.Item>
       </Menu>
     </AntdLayout.Sider>
