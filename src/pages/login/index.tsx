@@ -120,7 +120,7 @@ export const Login: React.FC = () => {
               Forgot Site ID
             </Title> */}
               <Title level={5} className="main-col-2-title-3" onClick={show}>
-                Register New User
+                Register New User ?
               </Title>
             </Space>
             <Button
