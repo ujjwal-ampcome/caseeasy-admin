@@ -21,6 +21,7 @@ import {
 } from "@refinedev/antd";
 import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
+import { CustomFooter } from "./components/layouts/footer";
 import { Login } from "./pages/login";
 import { Dashboard } from "./pages/dashboard";
 
@@ -60,6 +61,7 @@ function App() {
                           <ThemedLayoutV2
                             Sider={CustomSider}
                             Header={CustomHeader}
+                            Footer={CustomFooter}
                           >
                             <Outlet />
                           </ThemedLayoutV2>

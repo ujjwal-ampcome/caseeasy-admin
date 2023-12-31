@@ -9,7 +9,7 @@ export const Partners: React.FC = () => {
     <Card>
       <Title level={4}>Partners & Announcements</Title>
       <Carousel autoplay>
-        <img src={Imeda} alt="image" />
+        <img src={Imeda} alt="image" height="260px" />
       </Carousel>
     </Card>
   );

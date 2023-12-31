@@ -5,6 +5,7 @@ import { ScheduleTraining } from "./dashboard-component/layout1/ScheduleTraining
 import { LatestNews } from "./dashboard-component/layout2/LatestNews";
 import { Partners } from "./dashboard-component/layout3/Partners";
 import { ExpressEntry } from "./dashboard-component/layout3/ExpressEntry";
+import { LatestForms, ProfessionalDev } from "./dashboard-component/layout4";
 import "./styles.less";
 
 const { Title } = Typography;
@@ -23,6 +24,14 @@ export const Dashboard: React.FC = () => {
         </Col>
         <Col span={9}>
           <ExpressEntry />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={15}>
+          <ProfessionalDev />
+        </Col>
+        <Col span={9}>
+          <LatestForms />
         </Col>
       </Row>
     </Space>

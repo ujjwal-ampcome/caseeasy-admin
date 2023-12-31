@@ -21,7 +21,7 @@
   #latest-news {
     width: 100%;
     .latest-news-scroll{
-      height: 25vh;
+      height: 260px;
       overflow: auto;
       &::-webkit-scrollbar {
         width: 8px;
@@ -66,38 +66,100 @@
       }
     }
   }
-}
 
-#express-entry{
-  .express-entry-scroll{
-    height: 25vh;
-    overflow-y: auto;
-    overflow-x: scroll;
-    &::-webkit-scrollbar {
-      height: 8px;
-      width: 8px;
-    }
+  #express-entry{
+    .express-entry-scroll{
+      height: 260px;
+      overflow-y: auto;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #888;
-      border-radius: 6px;
-    }
+      &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 6px;
+      }
 
-    &::-webkit-scrollbar-track {
-      background-color: #f1f1f1;
-    }
+      &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+      }
 
-    .express-entry-btn{
-      width: 5em;
-      background-color: #2b70d6;
-      color: #fff;
-    }
+      .express-entry-btn{
+        width: 5em;
+        background-color: #2b70d6;
+        color: #fff;
+      }
 
-    .express-entry-divider{
-      color: #000;
-      margin: -0.4em 0;
-      font-weight: 900;
+      .express-entry-divider{
+        color: #000;
+        margin: -0.4em 0;
+        font-weight: 900;
+      }
     }
   }
-}
 
+  #professional-dev{
+    .prof-content-style{
+      height: 260px;
+      color: #fff;
+      text-align: center;
+      line-height: 75px;
+      background: #fff;
+
+      .prof-space{
+        display: flex;
+        background-color: #fff;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .avatar{
+        height: 7em;
+        width: 7em;
+      }
+
+      .title{
+        text-align: center;
+      }
+
+      .text-1 {
+        display: block;
+        text-align: center;
+      }
+
+      .text-2 {
+        display: block;
+        text-align: center;
+      }
+
+      .btn{
+        color: #fff;
+        background-color: #2b70d6;
+      }
+    }
+  }
+
+  :where(.css-dev-only-do-not-override-2rgkd4).ant-carousel .slick-dots li button {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3px;
+    padding: 0;
+    color: transparent;
+    font-size: 0;
+    background: #b7d7ff;
+    border: 0;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: all 0.3s;
+  }
+
+  :where(.css-dev-only-do-not-override-2rgkd4).ant-carousel .slick-dots li.slick-active button {
+    background: #b7d7ff;
+    opacity: 1;
+  }
+}
