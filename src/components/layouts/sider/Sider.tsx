@@ -18,6 +18,15 @@ import {
   RightOutlined,
   LeftOutlined,
   HomeOutlined,
+  CalendarOutlined,
+  BookOutlined,
+  FileTextOutlined,
+  ContactsOutlined,
+  InboxOutlined,
+  ContainerOutlined,
+  MessageOutlined,
+  PieChartOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 import WincaseIcon from "/wincase.ico";
@@ -186,6 +195,7 @@ export const CustomSider: typeof Sider = ({ render }) => {
           height: "64px",
           backgroundColor: token.colorBgElevated,
           fontSize: "14px",
+          position: "fixed",
         }}
       >
         <ThemedTitleV2
@@ -201,8 +211,9 @@ export const CustomSider: typeof Sider = ({ render }) => {
         selectedKeys={[selectedKey]}
         mode="inline"
         style={{
-          marginTop: "8px",
-          border: "none",
+          marginTop: "64px",
+          position: "fixed",
+          width: collapsed ? "80px" : "200px",
         }}
         onClick={() => {
           if (!breakpoint.lg) {
@@ -222,6 +233,114 @@ export const CustomSider: typeof Sider = ({ render }) => {
           }}
         >
           Dashboard
+        </Menu.Item>
+        <Menu.Item
+          key="/calender"
+          icon={<CalendarOutlined />}
+          onClick={() => {
+            push("/calender");
+          }}
+          style={{
+            fontWeight: selectedKey === "/calender" ? "bold" : "normal",
+          }}
+        >
+          Calender
+        </Menu.Item>
+        <Menu.Item
+          key="/cases"
+          icon={<BookOutlined />}
+          onClick={() => {
+            push("/cases");
+          }}
+          style={{
+            fontWeight: selectedKey === "/cases" ? "bold" : "normal",
+          }}
+        >
+          Cases
+        </Menu.Item>
+        <Menu.Item
+          key="/tasks"
+          icon={<FileTextOutlined />}
+          onClick={() => {
+            push("/tasks");
+          }}
+          style={{
+            fontWeight: selectedKey === "/tasks" ? "bold" : "normal",
+          }}
+        >
+          Tasks
+        </Menu.Item>
+        <Menu.Item
+          key="/contacts"
+          icon={<ContactsOutlined />}
+          onClick={() => {
+            push("/contacts");
+          }}
+          style={{
+            fontWeight: selectedKey === "/contacts" ? "bold" : "normal",
+          }}
+        >
+          Contacts
+        </Menu.Item>
+        <Menu.Item
+          key="/emails"
+          icon={<InboxOutlined />}
+          onClick={() => {
+            push("/emails");
+          }}
+          style={{
+            fontWeight: selectedKey === "/emails" ? "bold" : "normal",
+          }}
+        >
+          Emails
+        </Menu.Item>
+        <Menu.Item
+          key="/sharedlibrary"
+          icon={<ContainerOutlined />}
+          onClick={() => {
+            push("/sharedlibrary");
+          }}
+          style={{
+            fontWeight: selectedKey === "/sharedlibrary" ? "bold" : "normal",
+          }}
+        >
+          Shared Library
+        </Menu.Item>
+        <Menu.Item
+          key="/messagehub"
+          icon={<MessageOutlined />}
+          onClick={() => {
+            push("/messagehub");
+          }}
+          style={{
+            fontWeight: selectedKey === "/messagehub" ? "bold" : "normal",
+          }}
+        >
+          Message Hub
+        </Menu.Item>
+        <Menu.Item
+          key="/reports"
+          icon={<PieChartOutlined />}
+          onClick={() => {
+            push("/reports");
+          }}
+          style={{
+            fontWeight: selectedKey === "/reports" ? "bold" : "normal",
+          }}
+        >
+          Reports
+        </Menu.Item>
+        <Menu.Item
+          key="/settings"
+          icon={<SettingOutlined />}
+          onClick={() => {
+            push("/settings");
+          }}
+          style={{
+            fontWeight: selectedKey === "/settings" ? "bold" : "normal",
+          }}
+        >
+          Settings
         </Menu.Item>
       </Menu>
     </AntdLayout.Sider>

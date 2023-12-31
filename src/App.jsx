@@ -43,6 +43,42 @@ function App() {
                       name: "dashboard",
                       list: "/dashboard",
                     },
+                    {
+                      name: "calender",
+                      list: "/calender",
+                    },
+                    {
+                      name: "cases",
+                      list: "/cases",
+                    },
+                    {
+                      name: "tasks",
+                      list: "/tasks",
+                    },
+                    {
+                      name: "contacts",
+                      list: "/contacts",
+                    },
+                    {
+                      name: "emails",
+                      list: "/emails",
+                    },
+                    {
+                      name: "sharedlibrary",
+                      list: "/sharedlibrary",
+                    },
+                    {
+                      name: "messagehub",
+                      list: "/messagehub",
+                    },
+                    {
+                      name: "reports",
+                      list: "/reports",
+                    },
+                    {
+                      name: "settings",
+                      list: "/settings",
+                    },
                   ]}
                   options={{
                     syncWithLocation: true,

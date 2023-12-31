@@ -32,7 +32,7 @@ const props = {
 
 export const CustomHeader: React.FC = () => {
   return (
-    <Space direction="horizontal" size={"large"} id="parent-header">
+    <Space direction="horizontal" size={50} id="parent-header">
       <Row>
         <Col>
           <HeadTimer />
