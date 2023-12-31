@@ -12,9 +12,12 @@ import {
   Form,
   Modal,
   Layout,
+  Image,
 } from "antd";
 import { ILoginForm } from "../../components/interfaces";
 import { Register } from "../register";
+import Login1 from "/img/login1.png";
+import Login2 from "/img/login2.png";
 import "./styles.less";
 
 const { Title, Text } = Typography;
@@ -39,16 +42,10 @@ export const Login: React.FC = () => {
           </Title>
           <Carousel autoplay className="main-col-1-carousel">
             <div>
-              <h3 className="main-col-1-carousel-content">1</h3>
+              <Image src={Login2} className="main-col-1-carousel-content" />
             </div>
             <div>
-              <h3 className="main-col-1-carousel-content">2</h3>
-            </div>
-            <div>
-              <h3 className="main-col-1-carousel-content">3</h3>
-            </div>
-            <div>
-              <h3 className="main-col-1-carousel-content">4</h3>
+              <Image src={Login2} className="main-col-1-carousel-content" />
             </div>
           </Carousel>
           <Text className="main-col-1-title">
