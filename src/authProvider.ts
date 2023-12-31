@@ -55,7 +55,17 @@ export const authProvider: AuthBindings = {
   },
 
   logout: async () => {
-    localStorage.removeItem(TOKEN_KEY);
+    const { error } = await nhost.auth.signOut();
+    if (error) {
+      return {
+        success: false,
+        error: {
+          message: error.message,
+          name: "Login Error",
+        },
+      };
+    }
+
     return {
       success: true,
       redirectTo: "/login",
@@ -63,16 +73,20 @@ export const authProvider: AuthBindings = {
   },
 
   check: async () => {
-    // const token = localStorage.getItem(TOKEN_KEY);
-    // if (token) {
-    //   return {
-    //     authenticated: true,
-    //   };
-    // }
-
+    const isAuthenticated = await nhost.auth.isAuthenticatedAsync();
+    if (isAuthenticated) {
+      return {
+        authenticated: true,
+      };
+    }
     return {
-      authenticated: true,
-      redirectTo: "/dashboard",
+      authenticated: false,
+      error: {
+        message: "Check failed",
+        name: "Not authenticated",
+      },
+      logout: true,
+      redirectTo: "/login",
     };
   },
 

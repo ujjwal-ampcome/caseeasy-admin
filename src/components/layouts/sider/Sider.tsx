@@ -342,6 +342,13 @@ export const CustomSider: typeof Sider = ({ render }) => {
         >
           Settings
         </Menu.Item>
+        <Menu.Item
+          key="logout"
+          onClick={handleLogout}
+          icon={<LogoutOutlined />}
+        >
+          {translate("buttons.logout", "Logout")}
+        </Menu.Item>
       </Menu>
     </AntdLayout.Sider>
   );
