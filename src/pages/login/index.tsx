@@ -16,7 +16,6 @@ import {
 } from "antd";
 import { ILoginForm } from "../../components/interfaces";
 import { Register } from "../register";
-import Login1 from "/img/login1.png";
 import Login2 from "/img/login2.png";
 import "./styles.less";
 
@@ -42,10 +41,18 @@ export const Login: React.FC = () => {
           </Title>
           <Carousel autoplay className="main-col-1-carousel">
             <div>
-              <Image src={Login2} className="main-col-1-carousel-content" />
+              <Image
+                src={Login2}
+                preview={false}
+                className="main-col-1-carousel-content"
+              />
             </div>
             <div>
-              <Image src={Login2} className="main-col-1-carousel-content" />
+              <Image
+                src={Login2}
+                preview={false}
+                className="main-col-1-carousel-content"
+              />
             </div>
           </Carousel>
           <Text className="main-col-1-title">
