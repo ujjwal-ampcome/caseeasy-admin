@@ -17,6 +17,8 @@ import {
 import { ILoginForm } from "../../components/interfaces";
 import { Register } from "../register";
 import Login2 from "/img/login2.png";
+import Wincase from "/img/wincase.png";
+import ReCAPTCHA from "react-google-recaptcha";
 import "./styles.less";
 
 const { Title, Text } = Typography;
@@ -27,13 +29,19 @@ export const Login: React.FC = () => {
   const { mutate: login } = useLogin<ILoginForm>();
   return (
     <Layout>
-      <Row>
-        <Col span={16} className="main-col-1">
+      <Row id="login">
+        <Col
+          xs={{ span: 0 }}
+          sm={{ span: 0 }}
+          lg={{ span: 16 }}
+          xxl={{ span: 16 }}
+          className="main-col-1"
+        >
           <Title level={2} className="main-col-1-title">
             Canadian Immigration CRM software
             <Title
-              style={{ fontWeight: 400 }}
               level={4}
+              style={{ fontWeight: 400 }}
               className="main-col-1-title"
             >
               For RCICs and Immigration Lawyers
@@ -59,15 +67,27 @@ export const Login: React.FC = () => {
             &copy; 2023 CaseEasy by Ampcome Technologies Pvt. Ltd.
           </Text>
         </Col>
-        <Col span={8} className="main-col-2">
-          <Title className="main-col-2-title">
-            caseeasy
-            <Title level={5} className="main-col-2-title-2">
-              2.0 Preview
-            </Title>
-            <Title level={2} className="main-col-2-title-3">
-              Login
-            </Title>
+
+        <Col
+          xs={{ span: 24 }}
+          sm={{ span: 24 }}
+          lg={{ span: 8 }}
+          xxl={{ span: 8 }}
+          className="main-col-2"
+        >
+          <Space
+            direction="vertical"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <Image
+              src={Wincase}
+              alt="Wincase Logo"
+              preview={false}
+              width={280}
+            />
+          </Space>
+          <Title level={2} className="main-col-2-title">
+            Login
           </Title>
           <Form<ILoginForm>
             layout="vertical"
@@ -81,13 +101,6 @@ export const Login: React.FC = () => {
             }}
           >
             <Space direction="vertical" style={{ display: "flex" }}>
-              <Space direction="vertical" className="main-col-2-space">
-                <Text className="main-col-2-text">Enter your Site ID</Text>
-                <Form.Item name="siteid" rules={[{ required: false }]}>
-                  <Input size="large" placeholder="CCP20232986" />
-                </Form.Item>
-              </Space>
-
               <Space direction="vertical" className="main-col-2-space">
                 <Text className="main-col-2-text">
                   Enter your email address
@@ -108,26 +121,33 @@ export const Login: React.FC = () => {
                 </Form.Item>
               </Space>
             </Space>
+
             <Space
               direction="horizontal"
               size="large"
-              style={{ display: "flex" }}
+              style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Title level={5} className="main-col-2-title-3">
+              <Title level={5} className="main-col-2-title-1">
                 Forgot Password ?
               </Title>
-              {/* <Title level={5} className="main-col-2-title-3">
-              Forgot Site ID
-            </Title> */}
-              <Title level={5} className="main-col-2-title-3" onClick={show}>
-                Register New User ?
+              <Title level={5} className="main-col-2-title-2" onClick={show}>
+                Create an account ?
               </Title>
             </Space>
+
+            <ReCAPTCHA
+              sitekey="Your client site key"
+              onChange={() => {
+                console.log("recatcha triggered");
+              }}
+              size="normal"
+            />
+
             <Button
+              block
               type="primary"
               size="large"
               htmlType="submit"
-              block
               className="main-col-2-btn"
             >
               Sign in
