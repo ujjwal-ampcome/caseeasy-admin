@@ -24,6 +24,7 @@ import { CustomHeader } from "./components/layouts/header";
 import { CustomFooter } from "./components/layouts/footer";
 import { Login } from "./pages/login";
 import { Dashboard } from "./pages/dashboard";
+import { Contact } from "./pages/contact";
 
 function App() {
   return (
@@ -106,6 +107,7 @@ function App() {
                     >
                       <Route index element={<NavigateToResource />} />
                       <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/contacts" element={<Contact />} />
                       <Route path="*" element={<ErrorComponent />} />
                     </Route>
 
