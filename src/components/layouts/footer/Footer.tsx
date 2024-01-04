@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Select, Slider, Space, Typography } from "antd";
+import { Col, Row, Select, Slider, Typography } from "antd";
 import "./styles.less";
 
 const { Text, Link } = Typography;
