@@ -1,17 +1,30 @@
 import React from "react";
 import type { TabsProps } from "antd";
-import { Button, Col, Drawer, Flex, Row, Space, Tabs, Typography } from "antd";
+import {
+  Button,
+  Col,
+  Drawer,
+  Row,
+  Segmented,
+  Space,
+  Tabs,
+  Typography,
+} from "antd";
 import {
   ArrowsAltOutlined,
   CloudDownloadOutlined,
   FilterOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
+import { FilterPersonal } from "./contact-component/FilterPersonal";
+import { FilterCorporate } from "./contact-component/FilterCorporate";
+import { SegmentedValue } from "rc-segmented";
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 export const Contact: React.FC = () => {
   const [open, setOpen] = React.useState(false);
+  const [segment, setSegment] = React.useState<SegmentedValue>();
 
   const showDrawer = () => {
     setOpen(true);
@@ -41,6 +54,7 @@ export const Contact: React.FC = () => {
       children: "Content of Tab Pane 3",
     },
   ];
+
   return (
     <>
       <Row>
@@ -71,15 +85,18 @@ export const Contact: React.FC = () => {
           <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
         </Col>
       </Row>
-      <Drawer
-        title="Basic Drawer"
-        placement="right"
-        onClose={onClose}
-        open={open}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Drawer title="Filter" placement="right" onClose={onClose} open={open}>
+        <Segmented
+          block
+          size="large"
+          style={{ marginBottom: "1em" }}
+          options={[
+            { label: "Personal", value: "personal" },
+            { label: "Corporate", value: "corporate" },
+          ]}
+          onChange={(e: SegmentedValue) => setSegment(e)}
+        />
+        {segment === "personal" ? <FilterPersonal /> : <FilterCorporate />}
       </Drawer>
     </>
   );

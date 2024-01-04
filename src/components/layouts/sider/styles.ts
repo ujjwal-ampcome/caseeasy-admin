@@ -4,7 +4,7 @@ export const antLayoutSider: CSSProperties = {
   position: "relative",
 };
 export const antLayoutSiderMobile: CSSProperties = {
-  // position: "fixed",
+  position: "fixed",
   height: "100vh",
   zIndex: 999,
 };
