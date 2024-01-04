@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dropdown, Space, Typography } from "antd";
+import { Button, Dropdown, Typography } from "antd";
 import type { MenuProps } from "antd";
 import {
   CustomerServiceOutlined,
@@ -112,15 +112,15 @@ const items: MenuProps["items"] = [
 
 export const HeadHelp: React.FC = () => {
   return (
-    <Space direction="horizontal" id="head-help">
+    <div id="head-help">
       <Dropdown menu={{ items }}>
-        <Button type="text" className="help-btn">
-          <QuestionCircleFilled className="help-btn-icon" />
+        <Button type="text" className="btn">
+          <QuestionCircleFilled className="icon" />
           <Text strong style={{ color: "#8c8989" }}>
             Help
           </Text>
         </Button>
       </Dropdown>
-    </Space>
+    </div>
   );
 };

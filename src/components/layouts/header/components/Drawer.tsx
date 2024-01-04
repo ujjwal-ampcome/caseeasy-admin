@@ -1,5 +1,5 @@
 import { BellOutlined } from "@ant-design/icons";
-import { Space, Drawer } from "antd";
+import { Drawer } from "antd";
 import React from "react";
 import "../styles.less";
 
@@ -12,7 +12,7 @@ export const HeadDrawer: React.FC = () => {
     setOpen(false);
   };
   return (
-    <Space id="head-drawer">
+    <div id="head-drawer">
       <BellOutlined onClick={showDrawer} className="bell" />
       <Drawer
         title="Basic Drawer"
@@ -25,6 +25,6 @@ export const HeadDrawer: React.FC = () => {
         <p>Some contents...</p>
         <p>Some contents...</p>
       </Drawer>
-    </Space>
+    </div>
   );
 };

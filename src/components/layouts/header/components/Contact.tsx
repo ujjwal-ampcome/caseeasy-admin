@@ -57,7 +57,7 @@ const items: MenuProps["items"] = [
 
 export const HeadContact: React.FC = () => {
   return (
-    <Space direction="horizontal" id="head-contact">
+    <div id="head-contact">
       <Dropdown menu={{ items }}>
         <a onClick={(e) => e.preventDefault()}>
           <Space>
@@ -69,6 +69,6 @@ export const HeadContact: React.FC = () => {
           </Space>
         </a>
       </Dropdown>
-    </Space>
+    </div>
   );
 };

@@ -32,22 +32,22 @@ const props = {
 
 export const CustomHeader: React.FC = () => {
   return (
-    <Space direction="horizontal" size={50} id="parent-header">
-      <Row>
-        <Col>
+    <Row justify={"space-between"} align={"middle"} id="parent-header">
+      <Col>
+        <Space>
           <HeadTimer />
           <HeadActivity />
-        </Col>
-        <Col push={14}>
-          <Space direction="horizontal" style={{ display: "flex" }}>
-            <HeadContact />
-            <CustomDropdown props={props} className="portal" />
-            <HeadHelp />
-            <HeadDrawer />
-            <HeadAvatar />
-          </Space>
-        </Col>
-      </Row>
-    </Space>
+        </Space>
+      </Col>
+      <Col>
+        <Space>
+          <HeadContact />
+          <CustomDropdown props={props} className="portal" />
+          <HeadHelp />
+          <HeadDrawer />
+          <HeadAvatar />
+        </Space>
+      </Col>
+    </Row>
   );
 };

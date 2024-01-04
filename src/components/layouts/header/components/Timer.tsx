@@ -1,17 +1,17 @@
 import { CaretRightOutlined } from "@ant-design/icons";
-import { Button, Space, Typography } from "antd";
+import { Button, Typography } from "antd";
 import React from "react";
 const { Text } = Typography;
 export const HeadTimer: React.FC = () => {
   return (
-    <Space direction="horizontal" id="head-timer">
+    <div id="head-timer">
       <Button
         size="middle"
-        className="head-timer-btn"
-        icon={<CaretRightOutlined className="head-timer-icon" />}
+        className="btn"
+        icon={<CaretRightOutlined className="icon" />}
       >
         <Text className="text">Timer</Text>
       </Button>
-    </Space>
+    </div>
   );
 };

@@ -98,7 +98,7 @@ function App() {
                           <ThemedLayoutV2
                             Sider={CustomSider}
                             Header={CustomHeader}
-                            Footer={CustomFooter}
+                            // Footer={CustomFooter}
                           >
                             <Outlet />
                           </ThemedLayoutV2>
