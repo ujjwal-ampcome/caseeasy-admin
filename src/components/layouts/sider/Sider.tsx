@@ -195,7 +195,6 @@ export const CustomSider: typeof Sider = ({ render }) => {
           height: "64px",
           backgroundColor: token.colorBgElevated,
           fontSize: "14px",
-          position: "fixed",
         }}
       >
         <ThemedTitleV2
@@ -211,9 +210,8 @@ export const CustomSider: typeof Sider = ({ render }) => {
         selectedKeys={[selectedKey]}
         mode="inline"
         style={{
-          marginTop: "64px",
-          position: "fixed",
-          width: collapsed ? "80px" : "200px",
+          marginTop: "8px",
+          border: "none",
         }}
         onClick={() => {
           if (!breakpoint.lg) {
