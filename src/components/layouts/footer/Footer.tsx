@@ -25,7 +25,9 @@ export const CustomFooter = () => {
           </Col>
         </Row>
       </Col>
-      <Col>&copy; 2023 Aubyn Innovations Inc. All Rights Reserved.</Col>
+      <Col>
+        &copy; 2023 Ampcome Technologies (OPC) Ltd. All Rights Reserved.
+      </Col>
       <Col>
         <Select placeholder="Select Languages" size="small" />
         <Text strong style={{ display: "block" }}>
