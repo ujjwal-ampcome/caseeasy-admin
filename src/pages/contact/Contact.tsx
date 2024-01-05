@@ -8,6 +8,7 @@ import {
   Segmented,
   Space,
   Tabs,
+  Tooltip,
   Typography,
 } from "antd";
 import {
@@ -19,6 +20,7 @@ import {
 import { FilterPersonal } from "./contact-component/FilterPersonal";
 import { FilterCorporate } from "./contact-component/FilterCorporate";
 import { SegmentedValue } from "rc-segmented";
+import { Sorter } from "./contact-component/Sorter";
 
 const { Title } = Typography;
 
@@ -56,7 +58,7 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <>
+    <div id="contact">
       <Row>
         <Title>Contacts</Title>
       </Row>
@@ -66,9 +68,12 @@ export const Contact: React.FC = () => {
             <Button type="primary" size="large" onClick={showDrawer}>
               Filter <FilterOutlined />
             </Button>
-            <Button type="primary" size="large">
-              Sort <ArrowsAltOutlined />
-            </Button>
+            <Tooltip placement="bottom" title={<Sorter />} color="#fff">
+              <Button type="primary" size="large">
+                Sort <ArrowsAltOutlined />
+              </Button>
+            </Tooltip>
+
             <Button type="primary" size="large">
               Export <CloudDownloadOutlined />
             </Button>
@@ -98,6 +103,6 @@ export const Contact: React.FC = () => {
         />
         {segment === "personal" ? <FilterPersonal /> : <FilterCorporate />}
       </Drawer>
-    </>
+    </div>
   );
 };
