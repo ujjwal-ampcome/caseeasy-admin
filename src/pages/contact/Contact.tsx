@@ -105,7 +105,7 @@ export const Contact: React.FC = () => {
           ]}
           onChange={(e: SegmentedValue) => setSegment(e)}
         />
-        {segment === "personal" ? <FilterPersonal /> : <FilterCorporate />}
+        {segment === "corporate" ? <FilterCorporate /> : <FilterPersonal />}
       </Drawer>
       <Modal
         {...modalProps}
