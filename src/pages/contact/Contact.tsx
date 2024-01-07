@@ -4,6 +4,7 @@ import {
   Button,
   Col,
   Drawer,
+  Modal,
   Row,
   Segmented,
   Space,
@@ -17,14 +18,17 @@ import {
   FilterOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
+import { useModal } from "@refinedev/antd";
 import { FilterPersonal } from "./contact-component/FilterPersonal";
 import { FilterCorporate } from "./contact-component/FilterCorporate";
 import { SegmentedValue } from "rc-segmented";
 import { Sorter } from "./contact-component/Sorter";
+import { Export } from "./contact-component/Export";
 
 const { Title } = Typography;
 
 export const Contact: React.FC = () => {
+  const { show, modalProps } = useModal();
   const [open, setOpen] = React.useState(false);
   const [segment, setSegment] = React.useState<SegmentedValue>();
 
@@ -74,7 +78,7 @@ export const Contact: React.FC = () => {
               </Button>
             </Tooltip>
 
-            <Button type="primary" size="large">
+            <Button type="primary" size="large" onClick={show}>
               Export <CloudDownloadOutlined />
             </Button>
           </Space>
@@ -103,6 +107,14 @@ export const Contact: React.FC = () => {
         />
         {segment === "personal" ? <FilterPersonal /> : <FilterCorporate />}
       </Drawer>
+      <Modal
+        {...modalProps}
+        title="Advanced Export Tool"
+        footer={null}
+        width={800}
+      >
+        <Export />
+      </Modal>
     </div>
   );
 };
