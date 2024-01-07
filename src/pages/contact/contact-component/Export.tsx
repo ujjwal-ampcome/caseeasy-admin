@@ -85,7 +85,11 @@ export const Export = () => {
       </Row>
       <Row justify={"center"}>
         <Col>
-          {segment === "personal" ? (
+          {segment === "corporate" ? (
+            <Typography.Title level={4}>
+              Corporate currently does not support exports
+            </Typography.Title>
+          ) : (
             <Card>
               <Flex>
                 <Checkbox.Group
@@ -193,10 +197,6 @@ export const Export = () => {
                 </Col>
               </Row>
             </Card>
-          ) : (
-            <Typography.Title level={4}>
-              Corporate currently does not support exports
-            </Typography.Title>
           )}
         </Col>
       </Row>
