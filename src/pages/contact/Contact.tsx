@@ -4,6 +4,7 @@ import {
   Button,
   Col,
   Drawer,
+  Dropdown,
   Modal,
   Row,
   Segmented,
@@ -24,6 +25,8 @@ import { FilterCorporate } from "./contact-component/FilterCorporate";
 import { SegmentedValue } from "rc-segmented";
 import { Sorter } from "./contact-component/Sorter";
 import { Export } from "./contact-component/Export";
+import type { MenuProps } from "antd";
+import { ContactButton } from "./contact-component/ContactButton";
 
 const { Title } = Typography;
 
@@ -77,16 +80,13 @@ export const Contact: React.FC = () => {
                 Sort <ArrowsAltOutlined />
               </Button>
             </Tooltip>
-
             <Button type="primary" size="large" onClick={show}>
               Export <CloudDownloadOutlined />
             </Button>
           </Space>
         </Col>
         <Col>
-          <Button type="primary" size="large">
-            Add Contact <PlusCircleOutlined />
-          </Button>
+          <ContactButton />
         </Col>
       </Row>
       <Row>

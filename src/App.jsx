@@ -19,12 +19,14 @@ import {
   ThemedLayoutV2,
   useNotificationProvider,
 } from "@refinedev/antd";
+import { Login } from "./pages/login";
+import { Contact } from "./pages/contact";
+import { Dashboard } from "./pages/dashboard";
 import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
 import { CustomFooter } from "./components/layouts/footer";
-import { Login } from "./pages/login";
-import { Dashboard } from "./pages/dashboard";
-import { Contact } from "./pages/contact";
+import { PrimaryContact } from "./pages/contact/contact-component/personal-contact";
+import SpouseContact from "./pages/contact/contact-component/personal-contact/SpouseContact";
 
 function App() {
   return (
@@ -59,6 +61,10 @@ function App() {
                     {
                       name: "contacts",
                       list: "/contacts",
+                    },
+                    {
+                      name: "primary-contact",
+                      list: "/primary-contact",
                     },
                     {
                       name: "emails",
@@ -108,6 +114,14 @@ function App() {
                       <Route index element={<NavigateToResource />} />
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/contacts" element={<Contact />} />
+                      <Route
+                        path="/primary-contact"
+                        element={<PrimaryContact />}
+                      />
+                      <Route
+                        path="/spouse-contact"
+                        element={<SpouseContact />}
+                      />
                       <Route path="*" element={<ErrorComponent />} />
                     </Route>
 
