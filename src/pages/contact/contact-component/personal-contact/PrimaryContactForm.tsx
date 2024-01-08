@@ -7,12 +7,10 @@ import {
   Col,
   Input,
   Select,
-  DatePicker,
-  Card,
-  Space,
   Button,
+  DatePicker,
 } from "antd";
-import { CloseOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
 export const PrimaryContactForm = () => {
   return (
@@ -416,11 +414,138 @@ export const PrimaryContactForm = () => {
             )}
           </Form.List>
         </Row>
+        <Row gutter={[24, 24]}>
+          <Col span={24}>
+            <Typography.Title level={5}>Add other contacts</Typography.Title>
+            <Typography.Text strong>Contact Email </Typography.Text>
+          </Col>
+          <Col span={8}>
+            <Form.Item label="Email Address" name="gmail">
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row>
+          <Form.List name="email">
+            {(fields, { add, remove }) => (
+              <div>
+                {fields.map((field) => (
+                  <Row
+                    key={field.key}
+                    align={"middle"}
+                    gutter={[24, 24]}
+                    justify={"space-between"}
+                  >
+                    <Col span={24}>
+                      <Typography.Text strong>Contact Email</Typography.Text>
+                    </Col>
+
+                    <Col span={20}>
+                      <Form.Item label="Email Address" name="email">
+                        <Input size="large" />
+                      </Form.Item>
+                    </Col>
+
+                    <Col span={4}>
+                      <Button
+                        danger
+                        size="large"
+                        type="text"
+                        onClick={() => {
+                          remove(field.name);
+                        }}
+                      >
+                        <DeleteOutlined /> Remove
+                      </Button>
+                    </Col>
+                  </Row>
+                ))}
+                <Row>
+                  <Col>
+                    <Button
+                      onClick={() => {
+                        add();
+                      }}
+                      block
+                    >
+                      + Add Another Email
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
+            )}
+          </Form.List>
+        </Row>
+
+        <Row gutter={[24, 24]} align={"middle"}>
+          <Col span={24}>
+            <Typography.Text strong>Phone</Typography.Text>
+          </Col>
+          <Col span={8}>
+            <Form.Item label="Phone Number" name="phonenumber">
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item label="Select Type" name={"type"}>
+              <Select size="large" placeholder="select" />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row>
+          <Form.List name="contactnumber">
+            {(fields, { add, remove }) => (
+              <div>
+                {fields.map((field) => (
+                  <Row
+                    key={field.key}
+                    align={"middle"}
+                    gutter={[24, 24]}
+                    justify={"space-between"}
+                  >
+                    <Col span={24}>
+                      <Typography.Text strong>Phone number</Typography.Text>
+                    </Col>
+
+                    <Col span={20}>
+                      <Form.Item label="Phone" name="phonenumber">
+                        <Input size="large" />
+                      </Form.Item>
+                    </Col>
+
+                    <Col span={4}>
+                      <Button
+                        danger
+                        size="large"
+                        type="text"
+                        onClick={() => {
+                          remove(field.name);
+                        }}
+                      >
+                        <DeleteOutlined /> Remove
+                      </Button>
+                    </Col>
+                  </Row>
+                ))}
+                <Row>
+                  <Col>
+                    <Button
+                      onClick={() => {
+                        add();
+                      }}
+                      block
+                    >
+                      + Add Another Phone
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
+            )}
+          </Form.List>
+        </Row>
       </Form>
     </Flex>
   );
 };
-
-/**
- *
- */
