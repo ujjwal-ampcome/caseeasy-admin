@@ -9,10 +9,95 @@ import {
   Select,
   Button,
   DatePicker,
+  AutoComplete,
 } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { useList } from "@refinedev/core";
 
 export const PrimaryContactForm = () => {
+  const [jobtitle, setJobTitle] = React.useState<string | undefined>();
+
+  const { data } = useList({
+    resource: "Job_title",
+    meta: {
+      fields: ["id", "title", "header", "noc", "skill"],
+    },
+    pagination: {
+      pageSize: 25,
+      mode: "off",
+    },
+    filters: [
+      {
+        field: "title",
+        operator: "startswith",
+        value: `${jobtitle}`.toLowerCase(),
+      },
+    ],
+  });
+
+  const DATA = data?.data ?? [];
+  const TIER0 = DATA?.filter((item) => item["skill"] === "0");
+  const TIER1 = DATA?.filter((item) => item["skill"] === "1");
+  const TIER2 = DATA?.filter((item) => item["skill"] === "2");
+  const TIER3 = DATA?.filter((item) => item["skill"] === "3");
+  const TIER4 = DATA?.filter((item) => item["skill"] === "4");
+
+  const renderTitle = (title: string) => (
+    <Typography.Text strong style={{ color: "gray" }}>
+      {title}
+    </Typography.Text>
+  );
+
+  const renderItem = (title: string, count: string, skill: string) => ({
+    value: title,
+    label: (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography.Text>{title}</Typography.Text>
+        <Typography.Text>
+          TEIR: {skill} / NOC: {count}
+        </Typography.Text>
+      </div>
+    ),
+  });
+
+  const options = [
+    {
+      label: renderTitle("TIER 0 JOBS"),
+      options: TIER0.map((item) =>
+        renderItem(item.title, item.noc, item.skill)
+      ),
+    },
+    {
+      label: renderTitle("TIER 1 JOBS"),
+      options: TIER1.map((item) =>
+        renderItem(item.title, item.noc, item.skill)
+      ),
+    },
+    {
+      label: renderTitle("TIER 2 JOBS"),
+      options: TIER2.map((item) =>
+        renderItem(item.title, item.noc, item.skill)
+      ),
+    },
+    {
+      label: renderTitle("TIER 3 JOBS"),
+      options: TIER3.map((item) =>
+        renderItem(item.title, item.noc, item.skill)
+      ),
+    },
+    {
+      label: renderTitle("TIER 4 JOBS"),
+      options: TIER4.map((item) =>
+        renderItem(item.title, item.noc, item.skill)
+      ),
+    },
+  ];
+
   return (
     <Flex vertical>
       <Typography.Title level={4}>Add Personal Contact</Typography.Title>
@@ -89,7 +174,18 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Input size="large" />
+              <AutoComplete
+                popupClassName="certain-category-search-dropdown"
+                popupMatchSelectWidth={800}
+                options={options}
+                size="large"
+              >
+                <Input
+                  size="large"
+                  placeholder="input here"
+                  onChange={(e) => setJobTitle(e?.target?.value)}
+                />
+              </AutoComplete>
             </Form.Item>
           </Col>
           <Col span={8}>
