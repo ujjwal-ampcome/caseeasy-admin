@@ -26,13 +26,15 @@ export const PrimaryContactForm = () => {
       pageSize: 25,
       mode: "off",
     },
-    filters: [
-      {
-        field: "title",
-        operator: "startswith",
-        value: `${jobtitle}`.toLowerCase(),
-      },
-    ],
+    filters: jobtitle
+      ? [
+          {
+            field: "title",
+            operator: "startswith",
+            value: jobtitle,
+          },
+        ]
+      : undefined,
   });
 
   const DATA = data?.data ?? [];
