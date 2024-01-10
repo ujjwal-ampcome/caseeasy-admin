@@ -4,7 +4,6 @@ import {
   Button,
   Col,
   Drawer,
-  Dropdown,
   Modal,
   Row,
   Segmented,
@@ -17,7 +16,6 @@ import {
   ArrowsAltOutlined,
   CloudDownloadOutlined,
   FilterOutlined,
-  PlusCircleOutlined,
 } from "@ant-design/icons";
 import { useModal } from "@refinedev/antd";
 import { FilterPersonal } from "./contact-component/FilterPersonal";
@@ -25,7 +23,6 @@ import { FilterCorporate } from "./contact-component/FilterCorporate";
 import { SegmentedValue } from "rc-segmented";
 import { Sorter } from "./contact-component/Sorter";
 import { Export } from "./contact-component/Export";
-import type { MenuProps } from "antd";
 import { ContactButton } from "./contact-component/ContactButton";
 
 const { Title } = Typography;
@@ -49,18 +46,13 @@ export const Contact: React.FC = () => {
   const items: TabsProps["items"] = [
     {
       key: "1",
-      label: "Tab 1",
-      children: "Content of Tab Pane 1",
+      label: "PERSONAL",
+      children: "PERSONAL TABLE",
     },
     {
       key: "2",
-      label: "Tab 2",
-      children: "Content of Tab Pane 2",
-    },
-    {
-      key: "3",
-      label: "Tab 3",
-      children: "Content of Tab Pane 3",
+      label: "CORPORATE",
+      children: "CORPORATE TABLE",
     },
   ];
 
