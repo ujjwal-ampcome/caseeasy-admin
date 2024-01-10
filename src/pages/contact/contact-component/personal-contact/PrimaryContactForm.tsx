@@ -14,6 +14,9 @@ import {
 import { DeleteOutlined } from "@ant-design/icons";
 import { useList } from "@refinedev/core";
 import { useSelect } from "@refinedev/antd";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import "./../../styles.less";
 
 export const PrimaryContactForm = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
@@ -120,7 +123,7 @@ export const PrimaryContactForm = () => {
   ];
 
   return (
-    <Flex vertical>
+    <Flex vertical id="personal-contact-form">
       <Typography.Title level={4}>Add Personal Contact</Typography.Title>
       <Form layout="vertical" style={{ maxWidth: "100%" }} size="small">
         <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
@@ -303,7 +306,10 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Input size="large" />
+              <PhoneInput
+                placeholder="Phone Number"
+                onChange={(v) => console.log(v)}
+              />
             </Form.Item>
           </Col>
         </Row>
