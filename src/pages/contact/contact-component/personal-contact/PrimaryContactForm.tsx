@@ -13,9 +13,19 @@ import {
 } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useList } from "@refinedev/core";
+import { useSelect } from "@refinedev/antd";
 
 export const PrimaryContactForm = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
+
+  const { selectProps: maritalStatus } = useSelect({
+    resource: "enum_marital_status",
+    meta: {
+      fields: ["label", "value"],
+    },
+    optionLabel: "label",
+    optionValue: "value",
+  });
 
   const { data } = useList({
     resource: "Job_title",
@@ -61,13 +71,13 @@ export const PrimaryContactForm = () => {
       >
         <Typography.Text>{title}</Typography.Text>
         <Typography.Text>
-          TEIR: {skill} / NOC: {count}
+          TIER: {skill} / NOC: {count}
         </Typography.Text>
       </div>
     ),
   });
 
-  const options = [
+  const JobOptions = [
     {
       label: renderTitle("TIER 0 JOBS"),
       options: TIER0.map((item) =>
@@ -179,7 +189,7 @@ export const PrimaryContactForm = () => {
               <AutoComplete
                 popupClassName="certain-category-search-dropdown"
                 popupMatchSelectWidth={800}
-                options={options}
+                options={JobOptions}
                 size="large"
               >
                 <Input
@@ -201,7 +211,11 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Select size="large" placeholder="Select Status" />
+              <Select
+                size="large"
+                placeholder="Select Status"
+                {...maritalStatus}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>
