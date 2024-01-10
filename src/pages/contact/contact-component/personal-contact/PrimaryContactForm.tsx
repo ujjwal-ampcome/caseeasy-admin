@@ -27,6 +27,15 @@ export const PrimaryContactForm = () => {
     optionValue: "value",
   });
 
+  const { selectProps: residenceCountry } = useSelect({
+    resource: "enum_country_codes",
+    meta: {
+      fields: ["name", "code"],
+    },
+    optionLabel: "name",
+    optionValue: "code",
+  });
+
   const { data } = useList({
     resource: "Job_title",
     meta: {
@@ -243,7 +252,11 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Select size="large" placeholder="Select Country" />
+              <Select
+                size="large"
+                placeholder="Select Country"
+                {...residenceCountry}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -257,7 +270,12 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Select size="large" placeholder="Select Country" />
+              <Select
+                size="large"
+                mode="multiple"
+                placeholder="Select Country"
+                {...residenceCountry}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>
