@@ -143,7 +143,12 @@ export const PrimaryContactForm = () => {
   return (
     <Flex vertical id="personal-contact-form">
       <Typography.Title level={4}>Add Personal Contact</Typography.Title>
-      <Form layout="vertical" style={{ maxWidth: "100%" }} size="small">
+      <Form
+        layout="vertical"
+        style={{ maxWidth: "100%" }}
+        size="small"
+        onFinish={(e) => console.log("form", e)}
+      >
         <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
           <Col span={8}>
             <Form.Item
@@ -407,7 +412,7 @@ export const PrimaryContactForm = () => {
           </Row>
         </Row>
         <Row>
-          <Form.List name="items">
+          <Form.List name="address-list">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -528,14 +533,14 @@ export const PrimaryContactForm = () => {
             <Typography.Text strong>Contact Email </Typography.Text>
           </Col>
           <Col span={8}>
-            <Form.Item label="Email Address" name="gmail">
+            <Form.Item label="Email Address" name="primary-email">
               <Input size="large" />
             </Form.Item>
           </Col>
         </Row>
 
         <Row>
-          <Form.List name="email">
+          <Form.List name="email-list">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -591,19 +596,19 @@ export const PrimaryContactForm = () => {
             <Typography.Text strong>Phone</Typography.Text>
           </Col>
           <Col span={8}>
-            <Form.Item label="Phone Number" name="phonenumber">
+            <Form.Item label="Phone Number" name="primary-contact">
               <Input size="large" />
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Select Type" name={"type"}>
+            <Form.Item label="Select Type" name={"contact-type"}>
               <Select size="large" placeholder="select" {...contactType} />
             </Form.Item>
           </Col>
         </Row>
 
         <Row>
-          <Form.List name="contactnumber">
+          <Form.List name="contact-list">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -618,7 +623,7 @@ export const PrimaryContactForm = () => {
                     </Col>
 
                     <Col span={20}>
-                      <Form.Item label="Phone" name="phonenumber">
+                      <Form.Item label="Phone" name="phone">
                         <Input size="large" />
                       </Form.Item>
                     </Col>
@@ -652,6 +657,14 @@ export const PrimaryContactForm = () => {
               </div>
             )}
           </Form.List>
+        </Row>
+
+        <Row justify={"end"}>
+          <Col>
+            <Button type="primary" size="large" htmlType="submit">
+              Submit
+            </Button>
+          </Col>
         </Row>
       </Form>
     </Flex>

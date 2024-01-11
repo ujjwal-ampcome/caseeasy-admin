@@ -26,7 +26,6 @@ import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
 import { CustomFooter } from "./components/layouts/footer";
 import { PrimaryContact } from "./pages/contact/contact-component/personal-contact";
-import SpouseContact from "./pages/contact/contact-component/personal-contact/SpouseContact";
 
 function App() {
   return (
@@ -118,10 +117,7 @@ function App() {
                         path="/primary-contact"
                         element={<PrimaryContact />}
                       />
-                      <Route
-                        path="/spouse-contact"
-                        element={<SpouseContact />}
-                      />
+
                       <Route path="*" element={<ErrorComponent />} />
                     </Route>
 
