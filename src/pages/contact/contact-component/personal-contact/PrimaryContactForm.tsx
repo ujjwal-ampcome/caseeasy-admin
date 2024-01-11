@@ -39,6 +39,24 @@ export const PrimaryContactForm = () => {
     optionValue: "code",
   });
 
+  const { selectProps: addressType } = useSelect({
+    resource: "enum_address_type",
+    meta: {
+      fields: ["label", "value"],
+    },
+    optionLabel: "label",
+    optionValue: "value",
+  });
+
+  const { selectProps: contactType } = useSelect({
+    resource: "enum_contact_type",
+    meta: {
+      fields: ["label", "value"],
+    },
+    optionLabel: "label",
+    optionValue: "value",
+  });
+
   const { data } = useList({
     resource: "Job_title",
     meta: {
@@ -130,8 +148,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Unique Client Identifier (UCI)"
-              name="uci"
-              rules={[{ required: true, message: "Please input your UCI" }]}
+              name="unique_client_identifier"
             >
               <Input size="large" />
             </Form.Item>
@@ -139,7 +156,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Title"
-              name="Title"
+              name="title"
               rules={[{ required: true, message: "Please input your title" }]}
             >
               <Input size="large" />
@@ -148,7 +165,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Passport Number"
-              name="passport"
+              name="passport_number"
               rules={[
                 {
                   required: true,
@@ -162,7 +179,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="First Name"
-              name="firstname"
+              name="first_name"
               rules={[
                 {
                   required: true,
@@ -174,23 +191,14 @@ export const PrimaryContactForm = () => {
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item
-              label="Last Name"
-              name="lastname"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your name",
-                },
-              ]}
-            >
+            <Form.Item label="Last Name" name="last_name">
               <Input size="large" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label="Job Title/ NOC"
-              name="jobtitle"
+              name="job_title_id"
               rules={[
                 {
                   required: true,
@@ -215,7 +223,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Marital Status"
-              name="maritalstatus"
+              name="marital_status"
               rules={[
                 {
                   required: true,
@@ -233,7 +241,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Date Of Birth"
-              name="dob"
+              name="date_of_birth"
               rules={[
                 {
                   required: true,
@@ -247,7 +255,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Country of Residence"
-              name="residence"
+              name="country_of_residence"
               rules={[
                 {
                   required: true,
@@ -265,7 +273,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Countries of Citizenship"
-              name="citizenship"
+              name="countries_of_citizenship"
               rules={[
                 {
                   required: true,
@@ -284,7 +292,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Login Email"
-              name="loginemail"
+              name="login_email"
               rules={[
                 {
                   required: true,
@@ -298,7 +306,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Phone Number"
-              name="phonenumber"
+              name="phone_number"
               rules={[
                 {
                   required: true,
@@ -331,30 +339,12 @@ export const PrimaryContactForm = () => {
               </Form.Item>
             </Col>
             <Col span={8}>
-              <Form.Item
-                label="Street Number"
-                name="street"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your street number",
-                  },
-                ]}
-              >
+              <Form.Item label="Street Number" name="street_number">
                 <Input size="large" />
               </Form.Item>
             </Col>
             <Col span={8}>
-              <Form.Item
-                label="Street Name"
-                name="street"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your street name",
-                  },
-                ]}
-              >
+              <Form.Item label="Street Name" name="street_name">
                 <Input size="large" />
               </Form.Item>
             </Col>
@@ -383,13 +373,13 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Select size="large" />
+                <Select size="large" {...residenceCountry} />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item
                 label="Postal Code"
-                name="postalcode"
+                name="postal_code"
                 rules={[
                   {
                     required: true,
@@ -403,7 +393,7 @@ export const PrimaryContactForm = () => {
             <Col span={8}>
               <Form.Item
                 label="Address Type"
-                name="addresstype"
+                name="address_type"
                 rules={[
                   {
                     required: true,
@@ -411,7 +401,7 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Select size="large" />
+                <Select size="large" {...addressType} />
               </Form.Item>
             </Col>
           </Row>
@@ -442,30 +432,12 @@ export const PrimaryContactForm = () => {
                       </Form.Item>
                     </Col>
                     <Col span={8}>
-                      <Form.Item
-                        label="Street Number"
-                        name="street"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input your street number",
-                          },
-                        ]}
-                      >
+                      <Form.Item label="Street Number" name="street">
                         <Input size="large" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
-                      <Form.Item
-                        label="Street Name"
-                        name="street"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input your street name",
-                          },
-                        ]}
-                      >
+                      <Form.Item label="Street Name" name="street">
                         <Input size="large" />
                       </Form.Item>
                     </Col>
@@ -494,7 +466,7 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Select size="large" />
+                        <Select size="large" {...residenceCountry} />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -522,7 +494,7 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Select size="large" />
+                        <Select size="large" {...addressType} />
                       </Form.Item>
                     </Col>
                     <Col span={8} pull={8}>
@@ -625,7 +597,7 @@ export const PrimaryContactForm = () => {
           </Col>
           <Col span={8}>
             <Form.Item label="Select Type" name={"type"}>
-              <Select size="large" placeholder="select" />
+              <Select size="large" placeholder="select" {...contactType} />
             </Form.Item>
           </Col>
         </Row>
