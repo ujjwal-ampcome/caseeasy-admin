@@ -12,14 +12,21 @@ import {
   AutoComplete,
 } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import { useList } from "@refinedev/core";
+import { useList, useCreate } from "@refinedev/core";
 import { useSelect } from "@refinedev/antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { IPrimaryContactForm } from "../../../../components/interfaces";
 import "./../../styles.less";
 
-export const PrimaryContactForm = () => {
+export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
+  clientid,
+  setClientId,
+  activeTabKey,
+  setActiveTabKey,
+}) => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
+  const { mutateAsync: createContact } = useCreate();
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -140,6 +147,23 @@ export const PrimaryContactForm = () => {
     },
   ];
 
+  const handleSubmit = async (e: any) => {
+    const contact = await createContact({
+      resource: "Contacts",
+      values: {
+        ...e,
+        alternative_address: { address: e?.alternative_address },
+        alternative_email: { email: e?.alternative_email },
+        alternative_phone_number: { contact: e?.alternative_phone_number },
+      },
+    });
+    if (contact?.data?.marital_status === "married") {
+      setClientId(contact?.data?.id);
+      setActiveTabKey("2");
+    }
+    console.log("contact mutation successfull", contact);
+  };
+
   return (
     <Flex vertical id="personal-contact-form">
       <Typography.Title level={4}>Add Personal Contact</Typography.Title>
@@ -147,7 +171,7 @@ export const PrimaryContactForm = () => {
         layout="vertical"
         style={{ maxWidth: "100%" }}
         size="small"
-        onFinish={(e) => console.log("form", e)}
+        onFinish={(e) => handleSubmit(e)}
       >
         <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
           <Col span={8}>
@@ -164,7 +188,14 @@ export const PrimaryContactForm = () => {
               name="title"
               rules={[{ required: true, message: "Please input your title" }]}
             >
-              <Input size="large" />
+              <Select
+                size="large"
+                options={[
+                  { label: "Mr", value: "mr" },
+                  { label: "Mrs", value: "mrs" },
+                  { label: "They", value: "they" },
+                ]}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -203,7 +234,7 @@ export const PrimaryContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Job Title/ NOC"
-              name="job_title_id"
+              name="job_title"
               rules={[
                 {
                   required: true,
@@ -412,7 +443,7 @@ export const PrimaryContactForm = () => {
           </Row>
         </Row>
         <Row>
-          <Form.List name="address-list">
+          <Form.List name="alternative_address">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -425,7 +456,7 @@ export const PrimaryContactForm = () => {
                     <Col span={8}>
                       <Form.Item
                         label="Apt/Unit"
-                        name="apartment"
+                        name={[field.name, "apartment"]}
                         rules={[
                           {
                             required: true,
@@ -437,19 +468,25 @@ export const PrimaryContactForm = () => {
                       </Form.Item>
                     </Col>
                     <Col span={8}>
-                      <Form.Item label="Street Number" name="street">
+                      <Form.Item
+                        label="Street Number"
+                        name={[field.name, "street_number"]}
+                      >
                         <Input size="large" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
-                      <Form.Item label="Street Name" name="street">
+                      <Form.Item
+                        label="Street Name"
+                        name={[field.name, "street_name"]}
+                      >
                         <Input size="large" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
                       <Form.Item
                         label="City"
-                        name="city"
+                        name={[field.name, "city"]}
                         rules={[
                           {
                             required: true,
@@ -463,7 +500,7 @@ export const PrimaryContactForm = () => {
                     <Col span={8}>
                       <Form.Item
                         label="Country"
-                        name="country"
+                        name={[field.name, "country"]}
                         rules={[
                           {
                             required: true,
@@ -477,7 +514,7 @@ export const PrimaryContactForm = () => {
                     <Col span={8}>
                       <Form.Item
                         label="Postal Code"
-                        name="postalcode"
+                        name={[field.name, "postalcode"]}
                         rules={[
                           {
                             required: true,
@@ -491,7 +528,7 @@ export const PrimaryContactForm = () => {
                     <Col span={8}>
                       <Form.Item
                         label="Address Type"
-                        name="addresstype"
+                        name={[field.name, "addresstype"]}
                         rules={[
                           {
                             required: true,
@@ -533,14 +570,14 @@ export const PrimaryContactForm = () => {
             <Typography.Text strong>Contact Email </Typography.Text>
           </Col>
           <Col span={8}>
-            <Form.Item label="Email Address" name="primary-email">
+            <Form.Item label="Email Address" name="primary_email">
               <Input size="large" />
             </Form.Item>
           </Col>
         </Row>
 
         <Row>
-          <Form.List name="email-list">
+          <Form.List name="alternative_email">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -555,7 +592,10 @@ export const PrimaryContactForm = () => {
                     </Col>
 
                     <Col span={20}>
-                      <Form.Item label="Email Address" name="email">
+                      <Form.Item
+                        label="Email Address"
+                        name={[field.name, "alternative_email"]}
+                      >
                         <Input size="large" />
                       </Form.Item>
                     </Col>
@@ -596,19 +636,19 @@ export const PrimaryContactForm = () => {
             <Typography.Text strong>Phone</Typography.Text>
           </Col>
           <Col span={8}>
-            <Form.Item label="Phone Number" name="primary-contact">
+            <Form.Item label="Phone Number" name="phone_number">
               <Input size="large" />
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Select Type" name={"contact-type"}>
+            <Form.Item label="Select Type" name={"phone_number_type"}>
               <Select size="large" placeholder="select" {...contactType} />
             </Form.Item>
           </Col>
         </Row>
 
         <Row>
-          <Form.List name="contact-list">
+          <Form.List name="alternative_phone_number">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -623,7 +663,7 @@ export const PrimaryContactForm = () => {
                     </Col>
 
                     <Col span={20}>
-                      <Form.Item label="Phone" name="phone">
+                      <Form.Item label="Phone" name={[field.name, "phone"]}>
                         <Input size="large" />
                       </Form.Item>
                     </Col>

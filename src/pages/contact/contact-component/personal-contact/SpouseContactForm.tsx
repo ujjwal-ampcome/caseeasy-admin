@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AutoComplete,
+  Button,
   Col,
   DatePicker,
   Flex,
@@ -10,14 +11,19 @@ import {
   Select,
   Typography,
 } from "antd";
-import { useList } from "@refinedev/core";
+import { useList, useCreate } from "@refinedev/core";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useSelect } from "@refinedev/antd";
+import { ISpouseContactForm } from "../../../../components/interfaces";
 import "./../../styles.less";
 
-export const SpouseContactForm = () => {
+export const SpouseContactForm: React.FC<ISpouseContactForm> = ({
+  clientid,
+  setClientId,
+}) => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
+  const { mutateAsync: createspousecontact } = useCreate();
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -119,10 +125,26 @@ export const SpouseContactForm = () => {
       ),
     },
   ];
+
+  const handleSubmit = async (e: any) => {
+    const spouseinfo = await createspousecontact({
+      resource: "Contacts",
+      values: {
+        ...e,
+        contact_id: clientid,
+      },
+    });
+    console.log("spouse mutation successfull", spouseinfo);
+  };
   return (
     <Flex vertical id="spouse-contact-form">
       <Typography.Title level={4}>Add Spouse Contact</Typography.Title>
-      <Form layout="vertical" style={{ maxWidth: "100%" }} size="small">
+      <Form
+        layout="vertical"
+        style={{ maxWidth: "100%" }}
+        size="small"
+        onFinish={handleSubmit}
+      >
         <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
           <Col span={8}>
             <Form.Item
@@ -186,7 +208,7 @@ export const SpouseContactForm = () => {
           <Col span={8}>
             <Form.Item
               label="Job Title/ NOC"
-              name="job_title_id"
+              name="job_title"
               rules={[
                 {
                   required: true,
@@ -307,6 +329,13 @@ export const SpouseContactForm = () => {
                 onChange={(v) => console.log(v)}
               />
             </Form.Item>
+          </Col>
+        </Row>
+        <Row justify={"end"}>
+          <Col>
+            <Button type="primary" size="large" htmlType="submit">
+              Submit
+            </Button>
           </Col>
         </Row>
       </Form>

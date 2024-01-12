@@ -1,3 +1,4 @@
+import { UUID } from "crypto";
 import { CSSProperties } from "react";
 
 export interface ILoginForm {
@@ -18,4 +19,15 @@ export interface ICustomDropdown {
   style: CSSProperties;
   icon: any;
   ghost: boolean;
+}
+
+export interface IPrimaryContactForm {
+  clientid: any;
+  setClientId: any;
+  activeTabKey: any;
+  setActiveTabKey: any;
+}
+export interface ISpouseContactForm {
+  clientid: any;
+  setClientId: any;
 }
