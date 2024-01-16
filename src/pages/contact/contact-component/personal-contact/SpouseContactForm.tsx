@@ -15,15 +15,13 @@ import { useList, useCreate } from "@refinedev/core";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useSelect } from "@refinedev/antd";
-import { ISpouseContactForm } from "../../../../components/interfaces";
+import { useStore } from "../../../../store";
 import "./../../styles.less";
 
-export const SpouseContactForm: React.FC<ISpouseContactForm> = ({
-  clientid,
-  setClientId,
-}) => {
+export const SpouseContactForm: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { mutateAsync: createspousecontact } = useCreate();
+  const { clientID } = useStore();
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -131,7 +129,7 @@ export const SpouseContactForm: React.FC<ISpouseContactForm> = ({
       resource: "Contacts",
       values: {
         ...e,
-        contact_id: clientid,
+        contact_id: clientID,
       },
     });
     console.log("spouse mutation successfull", spouseinfo);
@@ -333,7 +331,7 @@ export const SpouseContactForm: React.FC<ISpouseContactForm> = ({
         </Row>
         <Row justify={"end"}>
           <Col>
-            <Button type="primary" size="large" htmlType="submit">
+            <Button type="primary" size="middle" htmlType="submit">
               Submit
             </Button>
           </Col>

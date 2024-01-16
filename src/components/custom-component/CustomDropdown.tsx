@@ -3,8 +3,6 @@ import type { MenuProps } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Input, Typography } from "antd";
 
-const { Text } = Typography;
-
 const CustomInput = ({ searchParam }: any) => {
   if (searchParam === true) {
     return (
@@ -33,9 +31,9 @@ const CustomDropdown: React.FC<any> = (props: any) => {
           {
             key: "0",
             label: (
-              <Text strong style={{ color: "#2b70d6" }}>
+              <Typography.Text strong style={{ color: "#2b70d6" }}>
                 {props.props.subName}
-              </Text>
+              </Typography.Text>
             ),
           },
           ...props.props.item.map((item: any, index: any) => ({

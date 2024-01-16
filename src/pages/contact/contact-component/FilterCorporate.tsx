@@ -35,10 +35,10 @@ export const FilterCorporate: React.FC = () => {
         </Form.Item>
       </Space>
       <Space direction="horizontal" style={{ display: "flex" }}>
-        <Button type="primary" size="large">
+        <Button type="primary" size="middle">
           Apply
         </Button>
-        <Button size="large">Clear</Button>
+        <Button size="middle">Clear</Button>
       </Space>
     </Form>
   );

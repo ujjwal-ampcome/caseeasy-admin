@@ -22,8 +22,6 @@ export interface ICustomDropdown {
 }
 
 export interface IPrimaryContactForm {
-  clientid: any;
-  setClientId: any;
   activeTabKey: any;
   setActiveTabKey: any;
 }

@@ -8,14 +8,14 @@ import { ExpressEntry } from "./dashboard-component/layout3/ExpressEntry";
 import { LatestForms, ProfessionalDev } from "./dashboard-component/layout4";
 import "./styles.less";
 
-const { Title } = Typography;
-
 export const Dashboard: React.FC = () => {
   const data: any = useGetIdentity();
 
   return (
     <Space direction="vertical" style={{ display: "flex" }} id="dashboard">
-      <Title>Welcome, {data?.data?.displayName}</Title>
+      <Typography.Title level={2}>
+        Welcome, {data?.data?.displayName}
+      </Typography.Title>
       <ScheduleTraining />
       <LatestNews />
       <Row gutter={[16, 16]}>

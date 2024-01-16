@@ -7,7 +7,6 @@ import { SpouseContactForm } from "./SpouseContactForm";
 
 export const PrimaryContact = () => {
   const { push } = useNavigation();
-  const [clientid, setClientId] = React.useState<any>();
   const [activeTabKey, setActiveTabKey] = React.useState<any>("1");
 
   const items: TabsProps["items"] = [
@@ -16,8 +15,6 @@ export const PrimaryContact = () => {
       label: "PRIMARY",
       children: (
         <PrimaryContactForm
-          clientid={clientid}
-          setClientId={setClientId}
           activeTabKey={activeTabKey}
           setActiveTabKey={setActiveTabKey}
         />
@@ -26,9 +23,7 @@ export const PrimaryContact = () => {
     {
       key: "2",
       label: "SPOUSE",
-      children: (
-        <SpouseContactForm clientid={clientid} setClientId={setClientId} />
-      ),
+      children: <SpouseContactForm />,
     },
   ];
 
