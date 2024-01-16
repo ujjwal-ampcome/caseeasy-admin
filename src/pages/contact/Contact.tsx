@@ -55,21 +55,19 @@ export const Contact: React.FC = () => {
 
   return (
     <div id="contact">
-      <Row>
-        <Typography.Title>Contacts</Typography.Title>
-      </Row>
+      <Typography.Title level={2}>Contacts</Typography.Title>
       <Row justify={"space-between"}>
-        <Col span={8}>
+        <Col>
           <Space direction="horizontal" style={{ display: "flex" }}>
-            <Button type="primary" size="large" onClick={showDrawer}>
+            <Button type="primary" size="middle" onClick={showDrawer}>
               Filter <FilterOutlined />
             </Button>
             <Tooltip placement="bottom" title={<Sorter />} color="#fff">
-              <Button type="primary" size="large">
+              <Button type="primary" size="middle">
                 Sort <ArrowsAltOutlined />
               </Button>
             </Tooltip>
-            <Button type="primary" size="large" onClick={show}>
+            <Button type="primary" size="middle" onClick={show}>
               Export <CloudDownloadOutlined />
             </Button>
           </Space>
@@ -86,7 +84,7 @@ export const Contact: React.FC = () => {
       <Drawer title="Filter" placement="right" onClose={onClose} open={open}>
         <Segmented
           block
-          size="large"
+          size="middle"
           style={{ marginBottom: "1em" }}
           options={[
             { label: "Personal", value: "personal" },

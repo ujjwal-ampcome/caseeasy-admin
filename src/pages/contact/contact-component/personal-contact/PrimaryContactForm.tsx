@@ -542,7 +542,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                     <Col span={8} pull={8}>
                       <Button
                         danger
-                        size="large"
+                        size="middle"
                         type="text"
                         onClick={() => {
                           remove(field.name);
@@ -555,7 +555,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 ))}
                 <Row>
                   <Col>
-                    <Button onClick={() => add()} block>
+                    <Button size="middle" onClick={() => add()} block>
                       + Add Another Address
                     </Button>
                   </Col>
@@ -603,7 +603,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                     <Col span={4}>
                       <Button
                         danger
-                        size="large"
+                        size="middle"
                         type="text"
                         onClick={() => {
                           remove(field.name);
@@ -617,6 +617,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 <Row>
                   <Col>
                     <Button
+                      size="middle"
                       onClick={() => {
                         add();
                       }}
@@ -671,7 +672,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                     <Col span={4}>
                       <Button
                         danger
-                        size="large"
+                        size="middle"
                         type="text"
                         onClick={() => {
                           remove(field.name);
@@ -685,6 +686,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 <Row>
                   <Col>
                     <Button
+                      size="middle"
                       onClick={() => {
                         add();
                       }}
@@ -701,7 +703,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
 
         <Row justify={"end"}>
           <Col>
-            <Button type="primary" size="large" htmlType="submit">
+            <Button type="primary" size="middle" htmlType="submit">
               Submit
             </Button>
           </Col>

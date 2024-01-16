@@ -331,7 +331,7 @@ export const SpouseContactForm: React.FC = () => {
         </Row>
         <Row justify={"end"}>
           <Col>
-            <Button type="primary" size="large" htmlType="submit">
+            <Button type="primary" size="middle" htmlType="submit">
               Submit
             </Button>
           </Col>

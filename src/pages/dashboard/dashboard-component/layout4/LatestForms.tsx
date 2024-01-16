@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Col, Divider, Row, Space, Typography } from "antd";
+import { Card, Divider, Space, Typography } from "antd";
 import "./../../styles.less";
 
 const { Text, Title } = Typography;

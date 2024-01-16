@@ -21,7 +21,9 @@ export const TrainingCard: React.FC = () => {
         </Text>
       </Row>
       <Row justify={"center"}>
-        <Button className="fund-btn">Book Training</Button>
+        <Button className="fund-btn" size="middle">
+          Book Training
+        </Button>
       </Row>
     </Card>
   );
