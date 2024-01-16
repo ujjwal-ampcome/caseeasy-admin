@@ -1,8 +1,9 @@
 import React from "react";
 import { useTable } from "@refinedev/antd";
-import { List, Table, Typography } from "antd";
+import { Dropdown, List, Menu, Space, Table, Typography } from "antd";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { DownOutlined } from "@ant-design/icons";
 dayjs.extend(relativeTime);
 
 export const PersonalContactTable = () => {
@@ -42,13 +43,13 @@ export const PersonalContactTable = () => {
     },
   });
 
-  console.log("tableProps", tableProps);
+  // console.log("tableProps", tableProps);
 
   return (
     <List>
       <Table {...tableProps} rowKey={"id"}>
         <Table.Column
-          fixed
+          fixed="left"
           title="Name"
           render={(value: any) => {
             if (value.title === "mr") {
@@ -108,7 +109,32 @@ export const PersonalContactTable = () => {
             );
           }}
         />
-        <Table.Column dataIndex={"actions"} title="Actions" fixed />
+        <Table.Column
+          dataIndex={"actions"}
+          title="Actions"
+          fixed={"right"}
+          render={(_, record: any) => (
+            <>
+              <Dropdown
+                dropdownRender={() => (
+                  <Menu>
+                    <Menu.Item key="1">Edit</Menu.Item>
+                    <Menu.Item key="2">Email</Menu.Item>
+                    <Menu.Item key="3">Convert to Client</Menu.Item>
+                    <Menu.Item key="3">Delete</Menu.Item>
+                  </Menu>
+                )}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space>
+                    Options
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+            </>
+          )}
+        />
       </Table>
     </List>
   );
