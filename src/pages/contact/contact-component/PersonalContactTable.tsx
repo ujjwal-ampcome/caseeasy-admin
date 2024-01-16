@@ -3,7 +3,13 @@ import { useTable } from "@refinedev/antd";
 import { Dropdown, List, Menu, Space, Table, Typography } from "antd";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { DownOutlined } from "@ant-design/icons";
+import {
+  CustomerServiceOutlined,
+  DeleteOutlined,
+  DownOutlined,
+  EditOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
 dayjs.extend(relativeTime);
 
 export const PersonalContactTable = () => {
@@ -118,10 +124,18 @@ export const PersonalContactTable = () => {
               <Dropdown
                 dropdownRender={() => (
                   <Menu>
-                    <Menu.Item key="1">Edit</Menu.Item>
-                    <Menu.Item key="2">Email</Menu.Item>
-                    <Menu.Item key="3">Convert to Client</Menu.Item>
-                    <Menu.Item key="3">Delete</Menu.Item>
+                    <Menu.Item key="1" icon={<EditOutlined />}>
+                      Edit
+                    </Menu.Item>
+                    <Menu.Item key="2" icon={<MailOutlined />}>
+                      Email
+                    </Menu.Item>
+                    <Menu.Item key="3" icon={<CustomerServiceOutlined />}>
+                      Convert to Client
+                    </Menu.Item>
+                    <Menu.Item key="4" icon={<DeleteOutlined />}>
+                      Delete
+                    </Menu.Item>
                   </Menu>
                 )}
               >
