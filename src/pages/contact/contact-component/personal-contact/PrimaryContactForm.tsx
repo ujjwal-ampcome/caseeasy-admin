@@ -17,16 +17,16 @@ import { useSelect } from "@refinedev/antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { IPrimaryContactForm } from "../../../../components/interfaces";
+import { useStore } from "./../../../../store";
 import "./../../styles.less";
 
 export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
-  clientid,
-  setClientId,
   activeTabKey,
   setActiveTabKey,
 }) => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { mutateAsync: createContact } = useCreate();
+  const { addClientID } = useStore();
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -158,7 +158,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
       },
     });
     if (contact?.data?.marital_status === "married") {
-      setClientId(contact?.data?.id);
+      addClientID(contact?.data?.id);
       setActiveTabKey("2");
     }
     console.log("contact mutation successfull", contact);
