@@ -24,8 +24,8 @@ import { SegmentedValue } from "rc-segmented";
 import { Sorter } from "./contact-component/Sorter";
 import { Export } from "./contact-component/Export";
 import { ContactButton } from "./contact-component/ContactButton";
-
-const { Title } = Typography;
+import { PersonalContactTable } from "./contact-component/PersonalContactTable";
+import { CorporateContactTable } from "./contact-component/CorporateContactTable";
 
 export const Contact: React.FC = () => {
   const { show, modalProps } = useModal();
@@ -39,27 +39,24 @@ export const Contact: React.FC = () => {
   const onClose = () => {
     setOpen(false);
   };
-  const onChange = (key: string) => {
-    console.log(key);
-  };
 
   const items: TabsProps["items"] = [
     {
       key: "1",
       label: "PERSONAL",
-      children: "PERSONAL TABLE",
+      children: <PersonalContactTable />,
     },
     {
       key: "2",
       label: "CORPORATE",
-      children: "CORPORATE TABLE",
+      children: <CorporateContactTable />,
     },
   ];
 
   return (
     <div id="contact">
       <Row>
-        <Title>Contacts</Title>
+        <Typography.Title>Contacts</Typography.Title>
       </Row>
       <Row justify={"space-between"}>
         <Col span={8}>
@@ -82,8 +79,8 @@ export const Contact: React.FC = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        <Col span={24}>
+          <Tabs defaultActiveKey="1" items={items} />
         </Col>
       </Row>
       <Drawer title="Filter" placement="right" onClose={onClose} open={open}>
