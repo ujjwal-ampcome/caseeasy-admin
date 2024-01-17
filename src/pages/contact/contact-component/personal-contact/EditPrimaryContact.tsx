@@ -15,25 +15,57 @@ import {
 } from "antd";
 import { useNavigation, useParsed } from "@refinedev/core";
 import { DeleteOutlined } from "@ant-design/icons";
-import { useList, useCreate } from "@refinedev/core";
-import { useSelect } from "@refinedev/antd";
+import { useList } from "@refinedev/core";
+import { useSelect, useForm } from "@refinedev/antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import type { TabsProps } from "antd";
-import { IPrimaryContactForm } from "../../../../components/interfaces";
-import { useStore } from "./../../../../store";
 import { EditSpouseContact } from "./EditSpouseContact";
 import "./../../styles.less";
+import { IPersonalContact } from "../../../../components/interfaces";
+import dayjs from "dayjs";
 
-export const EditPrimaryContact: React.FC<IPrimaryContactForm> = ({
-  activeTabKey,
-  setActiveTabKey,
-}) => {
+export const EditPrimaryContact: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
-  const { mutateAsync: createContact } = useCreate();
-  const { addClientID } = useStore();
   const { push } = useNavigation();
   const { id } = useParsed();
+  const { formProps, onFinish } = useForm<IPersonalContact>({
+    resource: "Contacts",
+    id: id,
+    action: "edit",
+    meta: {
+      fields: [
+        "id",
+        "unique_client_identifier",
+        "title",
+        "passport_number",
+        "first_name",
+        "last_name",
+        "job_title",
+        "marital_status",
+        "country_of_residence",
+        "countries_of_citizenship",
+        "login_email",
+        "phone_number",
+        "date_of_birth",
+        "alternative_email",
+        "alternative_phone_number",
+        "phone_number_type",
+        "profile_photo",
+        "address_type",
+        "apartment",
+        "city",
+        "country",
+        "postal_code",
+        "street_name",
+        "street_number",
+        "alternative_address",
+        "primary_email",
+        "created_at",
+        "updated_at",
+      ],
+    },
+  });
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -154,23 +186,6 @@ export const EditPrimaryContact: React.FC<IPrimaryContactForm> = ({
     },
   ];
 
-  const handleSubmit = async (e: any) => {
-    const contact = await createContact({
-      resource: "Contacts",
-      values: {
-        ...e,
-        alternative_address: { address: e?.alternative_address },
-        alternative_email: { email: e?.alternative_email },
-        alternative_phone_number: { contact: e?.alternative_phone_number },
-      },
-    });
-    if (contact?.data?.marital_status === "married") {
-      addClientID(contact?.data?.id);
-      setActiveTabKey("2");
-    }
-    console.log("contact mutation successfull", contact);
-  };
-
   const items: TabsProps["items"] = [
     {
       key: "1",
@@ -198,16 +213,17 @@ export const EditPrimaryContact: React.FC<IPrimaryContactForm> = ({
       />
       <Row>
         <Col>
-          <Tabs defaultActiveKey={activeTabKey} items={items} />
+          <Tabs defaultActiveKey={"1"} items={items} />
         </Col>
       </Row>
       <Flex vertical id="personal-contact-form">
         <Typography.Title level={4}>Edit Personal Contact</Typography.Title>
         <Form
+          {...formProps}
           layout="vertical"
           style={{ maxWidth: "100%" }}
           size="small"
-          onFinish={(e) => handleSubmit(e)}
+          onFinish={(data) => onFinish(data)}
         >
           <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
             <Col span={8}>
@@ -314,6 +330,9 @@ export const EditPrimaryContact: React.FC<IPrimaryContactForm> = ({
               <Form.Item
                 label="Date Of Birth"
                 name="date_of_birth"
+                getValueProps={(value) => ({
+                  value: value ? dayjs(value) : "",
+                })}
                 rules={[
                   {
                     required: true,
