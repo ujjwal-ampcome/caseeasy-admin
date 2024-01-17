@@ -1,7 +1,7 @@
 import React from "react";
+import dayjs from "dayjs";
 import { useTable } from "@refinedev/antd";
 import { Dropdown, List, Menu, Space, Table, Typography } from "antd";
-import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import {
   CustomerServiceOutlined,
@@ -10,9 +10,12 @@ import {
   EditOutlined,
   MailOutlined,
 } from "@ant-design/icons";
+import { useNavigation } from "@refinedev/core";
+
 dayjs.extend(relativeTime);
 
 export const PersonalContactTable = () => {
+  const { push } = useNavigation();
   const { tableProps } = useTable({
     resource: "Contacts",
     meta: {
@@ -48,8 +51,6 @@ export const PersonalContactTable = () => {
       ],
     },
   });
-
-  // console.log("tableProps", tableProps);
 
   return (
     <List>
@@ -124,7 +125,11 @@ export const PersonalContactTable = () => {
               <Dropdown
                 dropdownRender={() => (
                   <Menu>
-                    <Menu.Item key="1" icon={<EditOutlined />}>
+                    <Menu.Item
+                      key="1"
+                      icon={<EditOutlined />}
+                      onClick={() => push(`/primary-contact/edit/${record.id}`)}
+                    >
                       Edit
                     </Menu.Item>
                     <Menu.Item key="2" icon={<MailOutlined />}>

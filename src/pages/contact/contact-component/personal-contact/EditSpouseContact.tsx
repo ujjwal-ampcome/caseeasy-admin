@@ -18,7 +18,7 @@ import { useSelect } from "@refinedev/antd";
 import { useStore } from "../../../../store";
 import "./../../styles.less";
 
-export const SpouseContactForm: React.FC = () => {
+export const EditSpouseContact: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { mutateAsync: createspousecontact } = useCreate();
   const { clientID } = useStore();
@@ -136,7 +136,7 @@ export const SpouseContactForm: React.FC = () => {
   };
   return (
     <Flex vertical id="spouse-contact-form">
-      <Typography.Title level={4}>Add Spouse Contact</Typography.Title>
+      <Typography.Title level={4}>Edit Spouse Contact</Typography.Title>
       <Form
         layout="vertical"
         style={{ maxWidth: "100%" }}

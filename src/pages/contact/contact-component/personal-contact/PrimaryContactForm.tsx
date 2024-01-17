@@ -179,7 +179,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
               label="Unique Client Identifier (UCI)"
               name="unique_client_identifier"
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -189,7 +189,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
               rules={[{ required: true, message: "Please input your title" }]}
             >
               <Select
-                size="large"
+                size="middle"
                 options={[
                   { label: "Mr", value: "mr" },
                   { label: "Mrs", value: "mrs" },
@@ -209,7 +209,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 },
               ]}
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -223,12 +223,12 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 },
               ]}
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item label="Last Name" name="last_name">
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -246,10 +246,10 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 popupClassName="certain-category-search-dropdown"
                 popupMatchSelectWidth={800}
                 options={JobOptions}
-                size="large"
+                size="middle"
               >
                 <Input
-                  size="large"
+                  size="middle"
                   placeholder="input here"
                   onChange={(e) => setJobTitle(e?.target?.value)}
                 />
@@ -268,7 +268,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
               ]}
             >
               <Select
-                size="large"
+                size="middle"
                 placeholder="Select Status"
                 {...maritalStatus}
               />
@@ -285,7 +285,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 },
               ]}
             >
-              <DatePicker size="large" style={{ width: "100%" }} />
+              <DatePicker size="middle" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -300,7 +300,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
               ]}
             >
               <Select
-                size="large"
+                size="middle"
                 placeholder="Select Country"
                 {...residenceCountry}
               />
@@ -318,7 +318,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
               ]}
             >
               <Select
-                size="large"
+                size="middle"
                 mode="multiple"
                 placeholder="Select Country"
                 {...residenceCountry}
@@ -336,7 +336,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 },
               ]}
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -371,17 +371,17 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item label="Street Number" name="street_number">
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item label="Street Name" name="street_name">
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -395,7 +395,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -409,7 +409,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                   },
                 ]}
               >
-                <Select size="large" {...residenceCountry} />
+                <Select size="middle" {...residenceCountry} />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -423,7 +423,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -437,7 +437,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                   },
                 ]}
               >
-                <Select size="large" {...addressType} />
+                <Select size="middle" {...addressType} />
               </Form.Item>
             </Col>
           </Row>
@@ -464,7 +464,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                           },
                         ]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -472,7 +472,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                         label="Street Number"
                         name={[field.name, "street_number"]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -480,7 +480,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                         label="Street Name"
                         name={[field.name, "street_name"]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -494,7 +494,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                           },
                         ]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -508,7 +508,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                           },
                         ]}
                       >
-                        <Select size="large" {...residenceCountry} />
+                        <Select size="middle" {...residenceCountry} />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -522,7 +522,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                           },
                         ]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -536,7 +536,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                           },
                         ]}
                       >
-                        <Select size="large" {...addressType} />
+                        <Select size="middle" {...addressType} />
                       </Form.Item>
                     </Col>
                     <Col span={8} pull={8}>
@@ -555,7 +555,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 ))}
                 <Row>
                   <Col>
-                    <Button size="middle" onClick={() => add()} block>
+                    <Button onClick={() => add()} block>
                       + Add Another Address
                     </Button>
                   </Col>
@@ -571,7 +571,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
           </Col>
           <Col span={8}>
             <Form.Item label="Email Address" name="primary_email">
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
         </Row>
@@ -596,7 +596,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                         label="Email Address"
                         name={[field.name, "alternative_email"]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
 
@@ -617,7 +617,6 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 <Row>
                   <Col>
                     <Button
-                      size="middle"
                       onClick={() => {
                         add();
                       }}
@@ -638,12 +637,12 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
           </Col>
           <Col span={8}>
             <Form.Item label="Phone Number" name="phone_number">
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item label="Select Type" name={"phone_number_type"}>
-              <Select size="large" placeholder="select" {...contactType} />
+              <Select size="middle" placeholder="select" {...contactType} />
             </Form.Item>
           </Col>
         </Row>
@@ -665,7 +664,7 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
 
                     <Col span={20}>
                       <Form.Item label="Phone" name={[field.name, "phone"]}>
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
 
@@ -686,7 +685,6 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
                 <Row>
                   <Col>
                     <Button
-                      size="middle"
                       onClick={() => {
                         add();
                       }}
