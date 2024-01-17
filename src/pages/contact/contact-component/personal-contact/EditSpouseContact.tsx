@@ -163,7 +163,7 @@ export const EditSpouseContact: React.FC<ISpouseContact> = () => {
 
   React.useEffect(() => {
     console.log(SpouseID);
-  }, [SpouseID, formProps]);
+  }, [SpouseID]);
 
   return (
     <Flex vertical id="spouse-contact-form">
