@@ -7,12 +7,10 @@ import {
   QuestionCircleFilled,
 } from "@ant-design/icons";
 
-const { Text } = Typography;
-
 const items: MenuProps["items"] = [
   {
     key: "0",
-    label: <Text strong>RESOURCES</Text>,
+    label: <Typography.Text strong>RESOURCES</Typography.Text>,
   },
   {
     key: "1",
@@ -22,9 +20,9 @@ const items: MenuProps["items"] = [
         rel="noopener noreferrer"
         href="https://www.antgroup.com"
       >
-        <Text strong style={{ color: "#2b70d6" }}>
+        <Typography.Text strong style={{ color: "#2b70d6" }}>
           Support articles <ExportOutlined />
-        </Text>
+        </Typography.Text>
       </a>
     ),
   },
@@ -36,9 +34,9 @@ const items: MenuProps["items"] = [
         rel="noopener noreferrer"
         href="https://www.antgroup.com"
       >
-        <Text strong style={{ color: "#2b70d6" }}>
+        <Typography.Text strong style={{ color: "#2b70d6" }}>
           Training videos <ExportOutlined />
-        </Text>
+        </Typography.Text>
       </a>
     ),
   },
@@ -50,9 +48,9 @@ const items: MenuProps["items"] = [
         rel="noopener noreferrer"
         href="https://www.antgroup.com"
       >
-        <Text strong style={{ color: "#2b70d6" }}>
+        <Typography.Text strong style={{ color: "#2b70d6" }}>
           Latest updates <ExportOutlined />
-        </Text>
+        </Typography.Text>
       </a>
     ),
   },
@@ -64,9 +62,9 @@ const items: MenuProps["items"] = [
         rel="noopener noreferrer"
         href="https://www.antgroup.com"
       >
-        <Text strong style={{ color: "#2b70d6" }}>
+        <Typography.Text strong style={{ color: "#2b70d6" }}>
           Live Chat <CustomerServiceOutlined />
-        </Text>
+        </Typography.Text>
       </a>
     ),
   },
@@ -75,7 +73,7 @@ const items: MenuProps["items"] = [
   },
   {
     key: "5",
-    label: <Text strong>GET IN TOUCH</Text>,
+    label: <Typography.Text strong>GET IN TOUCH</Typography.Text>,
   },
   {
     key: "6",
@@ -85,9 +83,9 @@ const items: MenuProps["items"] = [
         rel="noopener noreferrer"
         href="https://www.antgroup.com"
       >
-        <Text strong style={{ color: "#2b70d6" }}>
+        <Typography.Text strong style={{ color: "#2b70d6" }}>
           Share feedback
-        </Text>
+        </Typography.Text>
       </a>
     ),
   },
@@ -102,9 +100,9 @@ const items: MenuProps["items"] = [
         rel="noopener noreferrer"
         href="https://www.antgroup.com"
       >
-        <Text strong style={{ color: "#2b70d6" }}>
+        <Typography.Text strong style={{ color: "#2b70d6" }}>
           Earn CPD <ExportOutlined />
-        </Text>
+        </Typography.Text>
       </a>
     ),
   },
@@ -114,11 +112,11 @@ export const HeadHelp: React.FC = () => {
   return (
     <div id="head-help">
       <Dropdown menu={{ items }}>
-        <Button type="text" className="btn">
+        <Button type="text" size="middle">
           <QuestionCircleFilled className="icon" />
-          <Text strong style={{ color: "#8c8989" }}>
+          <Typography.Text strong style={{ color: "#8c8989" }}>
             Help
-          </Text>
+          </Typography.Text>
         </Button>
       </Dropdown>
     </div>

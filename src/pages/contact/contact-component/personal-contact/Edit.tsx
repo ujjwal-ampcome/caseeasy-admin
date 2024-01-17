@@ -2,22 +2,22 @@ import React from "react";
 import type { TabsProps } from "antd";
 import { Breadcrumb, Col, Row, Tabs } from "antd";
 import { useNavigation } from "@refinedev/core";
-import { PrimaryContactForm } from "./PrimaryContactForm";
-import { SpouseContactForm } from "./SpouseContactForm";
+import { EditSpouseContact } from "./EditSpouseContact";
+import { EditPrimaryContact } from "./EditPrimaryContact";
 
-export const PrimaryContact = () => {
+export const EditPersonalContact = () => {
   const { push } = useNavigation();
 
   const items: TabsProps["items"] = [
     {
       key: "1",
       label: "PRIMARY",
-      children: <PrimaryContactForm />,
+      children: <EditPrimaryContact />,
     },
     {
       key: "2",
       label: "SPOUSE",
-      children: <SpouseContactForm />,
+      children: <EditSpouseContact />,
     },
   ];
 

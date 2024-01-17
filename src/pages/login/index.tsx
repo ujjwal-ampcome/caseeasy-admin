@@ -146,7 +146,7 @@ export const Login: React.FC = () => {
             <Button
               block
               type="primary"
-              size="large"
+              size="middle"
               htmlType="submit"
               className="main-col-2-btn"
             >

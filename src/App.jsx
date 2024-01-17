@@ -11,7 +11,6 @@ import { NhostProvider } from "@nhost/react";
 import { authProvider } from "./authProvider";
 import { DevtoolsProvider } from "@refinedev/devtools";
 import { Authenticated, Refine } from "@refinedev/core";
-import { ColorModeContextProvider } from "./contexts/color-mode";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import {
@@ -27,14 +26,13 @@ import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
 import { CustomFooter } from "./components/layouts/footer";
 import { PrimaryContact } from "./pages/contact/contact-component/personal-contact";
-import SpouseContact from "./pages/contact/contact-component/personal-contact/SpouseContact";
+import { EditPersonalContact } from "./pages/contact/contact-component/personal-contact/Edit";
 
 function App() {
   return (
     <BrowserRouter>
       <NhostProvider nhost={nhost}>
         <RefineKbarProvider>
-          {/* <ColorModeContextProvider> */}
           <AntdApp>
             <DevtoolsProvider>
               <Refine
@@ -118,9 +116,12 @@ function App() {
                     <Route
                       path="/primary-contact"
                       element={<PrimaryContact />}
-                    />
-                    <Route path="/spouse-contact" element={<SpouseContact />} />
+                    />               
                     <Route path="/settings" element={<Settings />} />
+                    <Route
+                      path="/primary-contact/edit/:id"
+                      element={<EditPersonalContact />}
+                    />
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
 
@@ -133,7 +134,6 @@ function App() {
               </Refine>
             </DevtoolsProvider>
           </AntdApp>
-          {/* </ColorModeContextProvider> */}
         </RefineKbarProvider>
       </NhostProvider>
     </BrowserRouter>
