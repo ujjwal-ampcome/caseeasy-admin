@@ -10,7 +10,11 @@ export const LatestForms = () => {
       <Space direction="horizontal">
         <Title level={4}>Latest Forms</Title>
       </Space>
-      <Space direction="vertical" className="express-entry-scroll">
+      <Space
+        direction="vertical"
+        className="express-entry-scroll"
+        style={{ display: "flex" }}
+      >
         <Space direction="vertical">
           <Text>IMM1294E:Application For Study Made Outside Canada</Text>
           <Text style={{ color: "#8c8989" }}>2023-11</Text>

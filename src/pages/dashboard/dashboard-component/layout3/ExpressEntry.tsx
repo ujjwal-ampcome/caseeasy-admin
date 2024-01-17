@@ -10,10 +10,14 @@ export const ExpressEntry: React.FC = () => {
       <Space direction={"horizontal"}>
         <Title level={4}>Latest Express Entry Draws</Title>
       </Space>
-      <Space direction="vertical" className="express-entry-scroll">
-        <Space direction="horizontal">
+      <Space
+        direction="vertical"
+        className="express-entry-scroll"
+        style={{ display: "flex" }}
+      >
+        <Space direction="horizontal" className="express-entry-content">
           <Space direction="vertical">
-            <Text>Agriculture and agri-food occupations (2023-1)</Text>
+            <Text>Agriculture and agri-food occupations (2023-1) </Text>
             <Text style={{ color: "#8c8989" }}>December 21, 2023</Text>
           </Space>
           <Space direction="vertical">
@@ -24,7 +28,7 @@ export const ExpressEntry: React.FC = () => {
           </Space>
         </Space>
         <Divider className="express-entry-divider" />
-        <Space direction="horizontal">
+        <Space direction="horizontal" className="express-entry-content">
           <Space direction="vertical">
             <Text>Agriculture and agri-food occupations (2023-1)</Text>
             <Text style={{ color: "#8c8989" }}>December 21, 2023</Text>
