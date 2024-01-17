@@ -19,7 +19,7 @@ import { ISpouseContact } from "../../../../components/interfaces";
 import "./../../styles.less";
 import dayjs from "dayjs";
 
-export const EditSpouseContact: React.FC<ISpouseContact> = () => {
+export const EditSpouseContact: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { id } = useParsed();
 
