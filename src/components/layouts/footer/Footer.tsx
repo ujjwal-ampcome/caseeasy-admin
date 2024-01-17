@@ -6,36 +6,36 @@ const { Text, Link } = Typography;
 
 export const CustomFooter = () => {
   return (
-    <Row justify={"space-around"} align={"middle"} id="parent-footer">
-      <Col>
+    <Row justify={"space-between"} align={"middle"} id="parent-footer">
+      <Col xs={24} sm={24} md={12} lg={12} xl={8} className="footer-col">
         <Row>
-          <Col flex={"auto"}>
-            <Text strong>Email Support</Text>
+          <Col>
+            <Text strong>Email Support :</Text>
           </Col>
-          <Col flex={"auto"}>
-            <Link>support@wincase.co</Link>
+          <Col>
+            <Link>&nbsp; support@wincase.co</Link>
           </Col>
         </Row>
         <Row>
-          <Col flex={"auto"}>
-            <Text strong>Support Hours</Text>
+          <Col>
+            <Text strong>Support Hours :</Text>
           </Col>
-          <Col flex={"auto"} push={1}>
-            <Text>Mon - Fri 10:00 AM - 6:00 PM EST</Text>
+          <Col>
+            <Text>&nbsp; Mon - Fri 10:00 AM - 6:00 PM EST</Text>
           </Col>
         </Row>
       </Col>
-      <Col>
+      <Col xs={24} sm={24} md={12} lg={12} xl={8} className="footer-col">
         &copy; 2023 Ampcome Technologies (OPC) Ltd. All Rights Reserved.
       </Col>
-      <Col>
+      <Col xs={24} sm={24} md={12} lg={12} xl={4} className="footer-col">
         <Select placeholder="Select Languages" size="small" />
         <Text strong style={{ display: "block" }}>
           Powered by Google Translate
         </Text>
       </Col>
-      <Col>
-        <Slider style={{ width: "15em" }} disabled />
+      <Col xs={24} sm={24} md={12} lg={12} xl={4} className="footer-col">
+        <Slider style={{ width: "10em" }} disabled />
         <Text style={{ display: "block" }}>0 GB of 0 GB (0% used)</Text>
       </Col>
     </Row>
