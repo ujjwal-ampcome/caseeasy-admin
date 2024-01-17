@@ -29,3 +29,8 @@ export interface ISpouseContactForm {
   clientid: any;
   setClientId: any;
 }
+
+export interface ContactState {
+  clientID: any;
+  addClientID: (id: any) => void;
+}
