@@ -19,3 +19,10 @@ export interface ICustomDropdown {
   icon: any;
   ghost: boolean;
 }
+
+export interface IUploadDetails {
+  title: string;
+  info: string;
+  size: string;
+  btnName: string;
+}
