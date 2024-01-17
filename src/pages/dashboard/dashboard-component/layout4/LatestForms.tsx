@@ -15,28 +15,28 @@ export const LatestForms = () => {
         className="express-entry-scroll"
         style={{ display: "flex" }}
       >
-        <Space direction="vertical">
+        <Space direction="vertical" className="express-entry-text">
           <Text>IMM1294E:Application For Study Made Outside Canada</Text>
           <Text style={{ color: "#8c8989" }}>2023-11</Text>
         </Space>
 
         <Divider className="express-entry-divider" />
 
-        <Space direction="vertical">
+        <Space direction="vertical" className="express-entry-text">
           <Text>IMM5556E:Document Checklist Worker</Text>
           <Text style={{ color: "#8c8989" }}>2023-10</Text>
         </Space>
 
         <Divider className="express-entry-divider" />
 
-        <Space direction="vertical">
+        <Space direction="vertical" className="express-entry-text">
           <Text>IMM5771E:Document Checklist</Text>
           <Text style={{ color: "#8c8989" }}>2023-11</Text>
         </Space>
 
         <Divider className="express-entry-divider" />
 
-        <Space direction="vertical">
+        <Space direction="vertical" className="express-entry-text">
           <Text>
             IMM5373E:Sponsorship Undertaking - Sponsorship Agreement Holders
             (Sah)

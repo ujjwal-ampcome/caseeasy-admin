@@ -24,8 +24,10 @@
     .latest-news-scroll {
       height: 260px;
       overflow: auto;
+      row-gap: 0px;
+
       &::-webkit-scrollbar {
-        width: 8px;
+        width: 7px;
       }
 
       &::-webkit-scrollbar-thumb {
@@ -35,6 +37,14 @@
 
       &::-webkit-scrollbar-track {
         background-color: #f1f1f1;
+      }
+
+      .latest-news-lineSpace {
+        row-gap: 0;
+      }
+
+      .latest-text {
+        margin: 12px 0;
       }
 
       h2 {
@@ -62,7 +72,7 @@
 
       .latest-news-divider {
         color: #000;
-        margin: -1em 0;
+        margin: 0.9em 0;
         font-weight: 900;
       }
     }
@@ -71,11 +81,12 @@
   #express-entry {
     .express-entry-scroll {
       height: 260px;
-      overflow-y: auto;
-      overflow-x: scroll;
+      padding-right: 10px;
+      overflow-y: scroll;
+      overflow-x: auto;
       &::-webkit-scrollbar {
         height: 8px;
-        width: 8px;
+        width: 7px;
       }
 
       &::-webkit-scrollbar-thumb {
@@ -87,6 +98,10 @@
         background-color: #f1f1f1;
       }
 
+      .express-entry-text {
+        row-gap: 0;
+      }
+
       .express-entry-btn {
         width: 5em;
         background-color: #2b70d6;
@@ -95,7 +110,7 @@
 
       .express-entry-divider {
         color: #000;
-        margin: -0.4em 0;
+        margin: 0.4em 0 0.4em 0;
         font-weight: 900;
       }
     }

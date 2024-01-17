@@ -22,15 +22,15 @@ export const LatestNews: React.FC = () => {
         </Title>
       </Space>
       <Space direction="vertical" className="latest-news-scroll">
-        <Divider className="latest-news-divider" />
-        <Text className="text-date">November 30th 2023</Text>
+        {/* <Divider className="latest-news-divider" /> */}
+        {/* <Text className="text-date">November 30th 2023</Text> */}
         <Text strong className="text-heading">
           Canada opens global immigration processing centre in Romania
         </Text>
         <Text className="text-subheading">
           Immigration, Refugees and Citizenship Canada
         </Text>
-        <Paragraph>
+        <Paragraph className="latest-text">
           Canada is a top destination for people looking for a new place to
           work, study, travel and build their lives with their families. As we
           continue to receive high volumes of applications from around the
@@ -47,7 +47,7 @@ export const LatestNews: React.FC = () => {
         <Text className="text-subheading">
           Immigration, Refugees and Citizenship Canada
         </Text>
-        <Paragraph>
+        <Paragraph className="latest-text">
           Canada is a top destination for people looking for a new place to
           work, study, travel and build their lives with their families. As we
           continue to receive high volumes of applications from around the
