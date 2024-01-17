@@ -117,7 +117,6 @@ function App() {
                       path="/primary-contact"
                       element={<PrimaryContact />}
                     />
-                    <Route path="/spouse-contact" element={<SpouseContact />} />
                     <Route path="/settings" element={<Settings />} />
                     <Route
                       path="/primary-contact/edit/:id"
