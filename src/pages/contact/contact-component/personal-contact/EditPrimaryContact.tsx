@@ -10,24 +10,19 @@ import {
   Button,
   DatePicker,
   AutoComplete,
-  Breadcrumb,
-  Tabs,
 } from "antd";
-import { useNavigation, useParsed } from "@refinedev/core";
+import dayjs from "dayjs";
+import { useParsed } from "@refinedev/core";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useList } from "@refinedev/core";
 import { useSelect, useForm } from "@refinedev/antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import type { TabsProps } from "antd";
-import { EditSpouseContact } from "./EditSpouseContact";
-import "./../../styles.less";
 import { IPersonalContact } from "../../../../components/interfaces";
-import dayjs from "dayjs";
+import "./../../styles.less";
 
 export const EditPrimaryContact: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
-  const { push } = useNavigation();
   const { id } = useParsed();
   const { formProps, onFinish } = useForm<IPersonalContact>({
     resource: "Contacts",
@@ -186,36 +181,8 @@ export const EditPrimaryContact: React.FC = () => {
     },
   ];
 
-  const items: TabsProps["items"] = [
-    {
-      key: "1",
-      label: "PRIMARY",
-    },
-    {
-      key: "2",
-      label: "SPOUSE",
-      children: <EditSpouseContact />,
-    },
-  ];
-
   return (
     <>
-      <Breadcrumb
-        items={[
-          {
-            title: "Contacts",
-            onClick: () => push("/contacts"),
-          },
-          {
-            title: "Edit Contacts",
-          },
-        ]}
-      />
-      <Row>
-        <Col>
-          <Tabs defaultActiveKey={"1"} items={items} />
-        </Col>
-      </Row>
       <Flex vertical id="personal-contact-form">
         <Typography.Title level={4}>Edit Personal Contact</Typography.Title>
         <Form

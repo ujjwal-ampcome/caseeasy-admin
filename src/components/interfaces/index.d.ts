@@ -55,3 +55,22 @@ export interface IPersonalContact {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface ISpouseContact {
+  id: UUID;
+  contact_id: UUID;
+  unique_client_identifier: string;
+  title: string;
+  passport_number: string;
+  first_name: string;
+  last_name: string;
+  job_title: string;
+  marital_status: string;
+  date_of_birth: string;
+  country_of_residence: string;
+  countries_of_citizenship: jsonb;
+  login_email: string;
+  phone_number: string;
+  created_at: Date;
+  updated_at: Date;
+}

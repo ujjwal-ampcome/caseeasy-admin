@@ -11,17 +11,54 @@ import {
   Select,
   Typography,
 } from "antd";
-import { useList, useCreate } from "@refinedev/core";
+import { useList, useParsed, useOne } from "@refinedev/core";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { useSelect } from "@refinedev/antd";
-import { useStore } from "../../../../store";
+import { useSelect, useForm } from "@refinedev/antd";
+import { ISpouseContact } from "../../../../components/interfaces";
 import "./../../styles.less";
+import dayjs from "dayjs";
 
-export const EditSpouseContact: React.FC = () => {
+export const EditSpouseContact: React.FC<ISpouseContact> = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
-  const { mutateAsync: createspousecontact } = useCreate();
-  const { clientID } = useStore();
+  const { id } = useParsed();
+
+  const { data: SpouseID } = useOne({
+    resource: "Contacts",
+    id,
+    meta: {
+      fields: [
+        "id",
+        {
+          Contact_Spouse: ["id"],
+        },
+      ],
+    },
+  });
+
+  const { formProps, onFinish } = useForm<ISpouseContact>({
+    resource: "Spouse",
+    id: SpouseID?.data?.Contact_Spouse?.[0]?.id,
+    action: "edit",
+    meta: {
+      fields: [
+        "id",
+        "contact_id",
+        "unique_client_identifier",
+        "title",
+        "passport_number",
+        "first_name",
+        "last_name",
+        "job_title",
+        "date_of_birth",
+        "marital_status",
+        "country_of_residence",
+        "countries_of_citizenship",
+        "login_email",
+        "phone_number",
+      ],
+    },
+  });
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -124,24 +161,19 @@ export const EditSpouseContact: React.FC = () => {
     },
   ];
 
-  const handleSubmit = async (e: any) => {
-    const spouseinfo = await createspousecontact({
-      resource: "Contacts",
-      values: {
-        ...e,
-        contact_id: clientID,
-      },
-    });
-    console.log("spouse mutation successfull", spouseinfo);
-  };
+  React.useEffect(() => {
+    console.log(SpouseID);
+  }, [SpouseID, formProps]);
+
   return (
     <Flex vertical id="spouse-contact-form">
       <Typography.Title level={4}>Edit Spouse Contact</Typography.Title>
       <Form
+        {...formProps}
         layout="vertical"
         style={{ maxWidth: "100%" }}
         size="small"
-        onFinish={handleSubmit}
+        onFinish={(data) => onFinish(data)}
       >
         <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
           <Col span={8}>
@@ -158,7 +190,14 @@ export const EditSpouseContact: React.FC = () => {
               name="title"
               rules={[{ required: true, message: "Please input your title" }]}
             >
-              <Input size="middle" />
+              <Select
+                size="middle"
+                options={[
+                  { label: "Mr", value: "Mr" },
+                  { label: "Mrs", value: "Mrs" },
+                  { label: "They", value: "They" },
+                ]}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -250,6 +289,9 @@ export const EditSpouseContact: React.FC = () => {
             <Form.Item
               label="Date Of Birth"
               name="date_of_birth"
+              getValueProps={(value) => ({
+                value: value ? dayjs(value) : "",
+              })}
               rules={[
                 {
                   required: true,
