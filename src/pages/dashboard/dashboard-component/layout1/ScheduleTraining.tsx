@@ -6,13 +6,13 @@ export const ScheduleTraining: React.FC = () => {
   return (
     <Space style={{ display: "flex" }} direction="horizontal">
       <Row gutter={[24, 24]}>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={12} lg={8} xl={8}>
           <TrainingCard />
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={12} lg={8} xl={8}>
           <TrainingCard />
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={12} lg={8} xl={8}>
           <TrainingCard />
         </Col>
       </Row>

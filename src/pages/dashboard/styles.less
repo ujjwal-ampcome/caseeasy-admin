@@ -1,17 +1,17 @@
-#dashboard{
+#dashboard {
   height: "100%";
-  #training-card{
+  #training-card {
     width: 100%;
-    .fund-icon{
+    .fund-icon {
       font-size: 5em;
       color: rgb(43, 112, 214);
-      padding: 0.5em 0
+      padding: 0.5em 0;
     }
-    .fund-text{
+    .fund-text {
       color: #8c8989;
       text-align: justify;
     }
-    .fund-btn{
+    .fund-btn {
       width: 100%;
       margin: 1em 0 0 0;
       color: #fff;
@@ -21,7 +21,7 @@
 
   #latest-news {
     width: 100%;
-    .latest-news-scroll{
+    .latest-news-scroll {
       height: 260px;
       overflow: auto;
       &::-webkit-scrollbar {
@@ -45,22 +45,22 @@
         margin: 0;
       }
 
-      .text-date{
+      .text-date {
         color: #8c8989;
         font-size: medium;
       }
 
-      .text-heading{
+      .text-heading {
         color: #2b70d6;
         font-size: medium;
       }
 
-      .text-subheading{
-        color:#2b70d6;
+      .text-subheading {
+        color: #2b70d6;
         font-size: medium;
       }
 
-      .latest-news-divider{
+      .latest-news-divider {
         color: #000;
         margin: -1em 0;
         font-weight: 900;
@@ -68,8 +68,8 @@
     }
   }
 
-  #express-entry{
-    .express-entry-scroll{
+  #express-entry {
+    .express-entry-scroll {
       height: 260px;
       overflow-y: auto;
       overflow-x: scroll;
@@ -87,41 +87,46 @@
         background-color: #f1f1f1;
       }
 
-      .express-entry-btn{
+      .express-entry-btn {
         width: 5em;
         background-color: #2b70d6;
         color: #fff;
       }
 
-      .express-entry-divider{
+      .express-entry-divider {
         color: #000;
         margin: -0.4em 0;
         font-weight: 900;
       }
     }
+
+    .express-entry-content {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
-  #professional-dev{
-    .prof-content-style{
+  #professional-dev {
+    .prof-content-style {
       height: 260px;
       color: #fff;
       text-align: center;
       line-height: 75px;
       background: #fff;
 
-      .prof-space{
+      .prof-space {
         display: flex;
         background-color: #fff;
         flex-wrap: wrap;
         justify-content: center;
       }
 
-      .avatar{
+      .avatar {
         height: 7em;
         width: 7em;
       }
 
-      .title{
+      .title {
         text-align: center;
       }
 
@@ -135,14 +140,17 @@
         text-align: center;
       }
 
-      .btn{
+      .btn {
         color: #fff;
         background-color: #2b70d6;
       }
     }
   }
 
-  :where(.css-dev-only-do-not-override-2rgkd4).ant-carousel .slick-dots li button {
+  :where(.css-dev-only-do-not-override-2rgkd4).ant-carousel
+    .slick-dots
+    li
+    button {
     position: relative;
     display: block;
     width: 100%;
@@ -159,7 +167,10 @@
     transition: all 0.3s;
   }
 
-  :where(.css-dev-only-do-not-override-2rgkd4).ant-carousel .slick-dots li.slick-active button {
+  :where(.css-dev-only-do-not-override-2rgkd4).ant-carousel
+    .slick-dots
+    li.slick-active
+    button {
     background: #b7d7ff;
     opacity: 1;
   }
