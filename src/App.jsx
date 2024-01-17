@@ -21,6 +21,7 @@ import {
 import { Login } from "./pages/login";
 import { Contact } from "./pages/contact";
 import { Dashboard } from "./pages/dashboard";
+import { Settings } from "./pages/settings/Settings";
 import { CustomSider } from "./components/layouts/sider";
 import { CustomHeader } from "./components/layouts/header";
 import { CustomFooter } from "./components/layouts/footer";
@@ -115,7 +116,8 @@ function App() {
                     <Route
                       path="/primary-contact"
                       element={<PrimaryContact />}
-                    />
+                    />               
+                    <Route path="/settings" element={<Settings />} />
                     <Route
                       path="/primary-contact/edit/:id"
                       element={<EditPersonalContact />}

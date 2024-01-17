@@ -19,18 +19,18 @@ export const Dashboard: React.FC = () => {
       <ScheduleTraining />
       <LatestNews />
       <Row gutter={[16, 16]}>
-        <Col span={15}>
+        <Col xs={24} sm={24} md={15} lg={15} xl={15}>
           <Partners />
         </Col>
-        <Col span={9}>
+        <Col xs={24} sm={24} md={9} lg={9} xl={9}>
           <ExpressEntry />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
-        <Col span={15}>
+        <Col xs={24} sm={24} md={15} lg={15} xl={15}>
           <ProfessionalDev />
         </Col>
-        <Col span={9}>
+        <Col xs={24} sm={24} md={9} lg={9} xl={9}>
           <LatestForms />
         </Col>
       </Row>
