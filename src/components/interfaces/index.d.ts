@@ -20,16 +20,6 @@ export interface ICustomDropdown {
   icon: any;
   ghost: boolean;
 }
-
-export interface IPrimaryContactForm {
-  activeTabKey: any;
-  setActiveTabKey: any;
-}
-export interface ISpouseContactForm {
-  clientid: any;
-  setClientId: any;
-}
-
 export interface ContactState {
   clientID: any;
   addClientID: (id: any) => void;

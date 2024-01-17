@@ -11,7 +11,7 @@ import {
   Select,
   Typography,
 } from "antd";
-import { useList, useCreate } from "@refinedev/core";
+import { useList, useCreate, useNavigation } from "@refinedev/core";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useSelect } from "@refinedev/antd";
@@ -22,6 +22,7 @@ export const SpouseContactForm: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { mutateAsync: createspousecontact } = useCreate();
   const { clientID } = useStore();
+  const { push } = useNavigation();
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -126,12 +127,15 @@ export const SpouseContactForm: React.FC = () => {
 
   const handleSubmit = async (e: any) => {
     const spouseinfo = await createspousecontact({
-      resource: "Contacts",
+      resource: "Spouse",
       values: {
         ...e,
         contact_id: clientID,
       },
     });
+    if (spouseinfo?.data?.id) {
+      push("/contacts");
+    }
     console.log("spouse mutation successfull", spouseinfo);
   };
   return (
@@ -158,7 +162,14 @@ export const SpouseContactForm: React.FC = () => {
               name="title"
               rules={[{ required: true, message: "Please input your title" }]}
             >
-              <Input size="middle" />
+              <Select
+                size="middle"
+                options={[
+                  { label: "Mr", value: "Mr" },
+                  { label: "Mrs", value: "Mrs" },
+                  { label: "They", value: "They" },
+                ]}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>

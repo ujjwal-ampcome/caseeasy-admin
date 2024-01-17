@@ -7,18 +7,12 @@ import { SpouseContactForm } from "./SpouseContactForm";
 
 export const PrimaryContact = () => {
   const { push } = useNavigation();
-  const [activeTabKey, setActiveTabKey] = React.useState<any>("1");
 
   const items: TabsProps["items"] = [
     {
       key: "1",
       label: "PRIMARY",
-      children: (
-        <PrimaryContactForm
-          activeTabKey={activeTabKey}
-          setActiveTabKey={setActiveTabKey}
-        />
-      ),
+      children: <PrimaryContactForm />,
     },
     {
       key: "2",
@@ -42,7 +36,7 @@ export const PrimaryContact = () => {
       />
       <Row>
         <Col>
-          <Tabs defaultActiveKey={activeTabKey} items={items} />
+          <Tabs defaultActiveKey={"1"} items={items} />
         </Col>
       </Row>
     </div>

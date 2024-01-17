@@ -16,14 +16,10 @@ import { useList, useCreate } from "@refinedev/core";
 import { useSelect } from "@refinedev/antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { IPrimaryContactForm } from "../../../../components/interfaces";
 import { useStore } from "./../../../../store";
 import "./../../styles.less";
 
-export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
-  activeTabKey,
-  setActiveTabKey,
-}) => {
+export const PrimaryContactForm: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { mutateAsync: createContact } = useCreate();
   const { addClientID } = useStore();
@@ -152,14 +148,13 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
       resource: "Contacts",
       values: {
         ...e,
-        alternative_address: { address: e?.alternative_address },
-        alternative_email: { email: e?.alternative_email },
-        alternative_phone_number: { contact: e?.alternative_phone_number },
+        alternative_address: e?.alternative_address,
+        alternative_email: e?.alternative_email,
+        alternative_phone_number: e?.alternative_phone_number,
       },
     });
-    if (contact?.data?.marital_status === "married") {
+    if (contact?.data?.marital_status === "marriage") {
       addClientID(contact?.data?.id);
-      setActiveTabKey("2");
     }
     console.log("contact mutation successfull", contact);
   };
@@ -191,9 +186,9 @@ export const PrimaryContactForm: React.FC<IPrimaryContactForm> = ({
               <Select
                 size="middle"
                 options={[
-                  { label: "Mr", value: "mr" },
-                  { label: "Mrs", value: "mrs" },
-                  { label: "They", value: "they" },
+                  { label: "Mr", value: "Mr" },
+                  { label: "Mrs", value: "Mrs" },
+                  { label: "They", value: "They" },
                 ]}
               />
             </Form.Item>
