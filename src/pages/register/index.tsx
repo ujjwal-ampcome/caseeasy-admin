@@ -62,7 +62,7 @@ export const Register: React.FC = () => {
 
         <Button
           type="primary"
-          size="large"
+          size="middle"
           htmlType="submit"
           block
           className="main-col-btn"

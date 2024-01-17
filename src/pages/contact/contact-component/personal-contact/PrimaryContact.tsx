@@ -5,21 +5,22 @@ import { useNavigation } from "@refinedev/core";
 import { PrimaryContactForm } from "./PrimaryContactForm";
 import { SpouseContactForm } from "./SpouseContactForm";
 
-const items: TabsProps["items"] = [
-  {
-    key: "1",
-    label: "PRIMARY",
-    children: <PrimaryContactForm />,
-  },
-  {
-    key: "2",
-    label: "SPOUSE",
-    children: <SpouseContactForm />,
-  },
-];
-
 export const PrimaryContact = () => {
   const { push } = useNavigation();
+
+  const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: "PRIMARY",
+      children: <PrimaryContactForm />,
+    },
+    {
+      key: "2",
+      label: "SPOUSE",
+      children: <SpouseContactForm />,
+    },
+  ];
+
   return (
     <div>
       <Breadcrumb
@@ -35,7 +36,7 @@ export const PrimaryContact = () => {
       />
       <Row>
         <Col>
-          <Tabs defaultActiveKey="1" items={items} />
+          <Tabs defaultActiveKey={"1"} items={items} />
         </Col>
       </Row>
     </div>

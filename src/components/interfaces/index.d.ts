@@ -1,3 +1,4 @@
+import { UUID } from "crypto";
 import { CSSProperties } from "react";
 
 export interface ILoginForm {
@@ -25,4 +26,8 @@ export interface IUploadDetails {
   info: string;
   size: string;
   btnName: string;
+}
+export interface ContactState {
+  clientID: any;
+  addClientID: (id: any) => void;
 }

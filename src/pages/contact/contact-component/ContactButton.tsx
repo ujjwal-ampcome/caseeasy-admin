@@ -21,13 +21,13 @@ export const ContactButton = () => {
       key: "2",
       label: "Corporate Contact",
       icon: <ReconciliationOutlined />,
-      onClick: () => push(""),
+      onClick: () => push("/primary-contact"),
     },
   ];
   return (
     <div>
       <Dropdown menu={{ items }}>
-        <Button type="primary" size="large">
+        <Button type="primary" size="middle">
           Add Contact <PlusCircleOutlined />
         </Button>
       </Dropdown>

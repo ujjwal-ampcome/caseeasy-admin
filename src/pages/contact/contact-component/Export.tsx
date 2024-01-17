@@ -193,7 +193,9 @@ export const Export = () => {
               </Flex>
               <Row justify={"end"}>
                 <Col>
-                  <Button type="primary">Export</Button>
+                  <Button type="primary" size="middle">
+                    Export
+                  </Button>
                 </Col>
               </Row>
             </Card>

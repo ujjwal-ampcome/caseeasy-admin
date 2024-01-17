@@ -12,14 +12,17 @@ import {
   AutoComplete,
 } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import { useList } from "@refinedev/core";
+import { useList, useCreate } from "@refinedev/core";
 import { useSelect } from "@refinedev/antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { useStore } from "./../../../../store";
 import "./../../styles.less";
 
-export const PrimaryContactForm = () => {
+export const PrimaryContactForm: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
+  const { mutateAsync: createContact } = useCreate();
+  const { addClientID } = useStore();
 
   const { selectProps: maritalStatus } = useSelect({
     resource: "enum_marital_status",
@@ -140,17 +143,38 @@ export const PrimaryContactForm = () => {
     },
   ];
 
+  const handleSubmit = async (e: any) => {
+    const contact = await createContact({
+      resource: "Contacts",
+      values: {
+        ...e,
+        alternative_address: e?.alternative_address,
+        alternative_email: e?.alternative_email,
+        alternative_phone_number: e?.alternative_phone_number,
+      },
+    });
+    if (contact?.data?.marital_status === "marriage") {
+      addClientID(contact?.data?.id);
+    }
+    console.log("contact mutation successfull", contact);
+  };
+
   return (
     <Flex vertical id="personal-contact-form">
       <Typography.Title level={4}>Add Personal Contact</Typography.Title>
-      <Form layout="vertical" style={{ maxWidth: "100%" }} size="small">
+      <Form
+        layout="vertical"
+        style={{ maxWidth: "100%" }}
+        size="small"
+        onFinish={(e) => handleSubmit(e)}
+      >
         <Row justify={"space-between"} gutter={[24, 24]} align={"middle"}>
           <Col span={8}>
             <Form.Item
               label="Unique Client Identifier (UCI)"
               name="unique_client_identifier"
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -159,7 +183,14 @@ export const PrimaryContactForm = () => {
               name="title"
               rules={[{ required: true, message: "Please input your title" }]}
             >
-              <Input size="large" />
+              <Select
+                size="middle"
+                options={[
+                  { label: "Mr", value: "Mr" },
+                  { label: "Mrs", value: "Mrs" },
+                  { label: "They", value: "They" },
+                ]}
+              />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -173,7 +204,7 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -187,18 +218,18 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item label="Last Name" name="last_name">
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label="Job Title/ NOC"
-              name="job_title_id"
+              name="job_title"
               rules={[
                 {
                   required: true,
@@ -210,10 +241,10 @@ export const PrimaryContactForm = () => {
                 popupClassName="certain-category-search-dropdown"
                 popupMatchSelectWidth={800}
                 options={JobOptions}
-                size="large"
+                size="middle"
               >
                 <Input
-                  size="large"
+                  size="middle"
                   placeholder="input here"
                   onChange={(e) => setJobTitle(e?.target?.value)}
                 />
@@ -232,7 +263,7 @@ export const PrimaryContactForm = () => {
               ]}
             >
               <Select
-                size="large"
+                size="middle"
                 placeholder="Select Status"
                 {...maritalStatus}
               />
@@ -249,7 +280,7 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <DatePicker size="large" style={{ width: "100%" }} />
+              <DatePicker size="middle" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -264,7 +295,7 @@ export const PrimaryContactForm = () => {
               ]}
             >
               <Select
-                size="large"
+                size="middle"
                 placeholder="Select Country"
                 {...residenceCountry}
               />
@@ -282,7 +313,7 @@ export const PrimaryContactForm = () => {
               ]}
             >
               <Select
-                size="large"
+                size="middle"
                 mode="multiple"
                 placeholder="Select Country"
                 {...residenceCountry}
@@ -300,7 +331,7 @@ export const PrimaryContactForm = () => {
                 },
               ]}
             >
-              <Input size="large" />
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -335,17 +366,17 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item label="Street Number" name="street_number">
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item label="Street Name" name="street_name">
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -359,7 +390,7 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -373,7 +404,7 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Select size="large" {...residenceCountry} />
+                <Select size="middle" {...residenceCountry} />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -387,7 +418,7 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="middle" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -401,13 +432,13 @@ export const PrimaryContactForm = () => {
                   },
                 ]}
               >
-                <Select size="large" {...addressType} />
+                <Select size="middle" {...addressType} />
               </Form.Item>
             </Col>
           </Row>
         </Row>
         <Row>
-          <Form.List name="items">
+          <Form.List name="alternative_address">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -420,7 +451,7 @@ export const PrimaryContactForm = () => {
                     <Col span={8}>
                       <Form.Item
                         label="Apt/Unit"
-                        name="apartment"
+                        name={[field.name, "apartment"]}
                         rules={[
                           {
                             required: true,
@@ -428,23 +459,29 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
-                      <Form.Item label="Street Number" name="street">
-                        <Input size="large" />
+                      <Form.Item
+                        label="Street Number"
+                        name={[field.name, "street_number"]}
+                      >
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
-                      <Form.Item label="Street Name" name="street">
-                        <Input size="large" />
+                      <Form.Item
+                        label="Street Name"
+                        name={[field.name, "street_name"]}
+                      >
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
                       <Form.Item
                         label="City"
-                        name="city"
+                        name={[field.name, "city"]}
                         rules={[
                           {
                             required: true,
@@ -452,13 +489,13 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
                       <Form.Item
                         label="Country"
-                        name="country"
+                        name={[field.name, "country"]}
                         rules={[
                           {
                             required: true,
@@ -466,13 +503,13 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Select size="large" {...residenceCountry} />
+                        <Select size="middle" {...residenceCountry} />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
                       <Form.Item
                         label="Postal Code"
-                        name="postalcode"
+                        name={[field.name, "postalcode"]}
                         rules={[
                           {
                             required: true,
@@ -480,13 +517,13 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Input size="large" />
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
                       <Form.Item
                         label="Address Type"
-                        name="addresstype"
+                        name={[field.name, "addresstype"]}
                         rules={[
                           {
                             required: true,
@@ -494,13 +531,13 @@ export const PrimaryContactForm = () => {
                           },
                         ]}
                       >
-                        <Select size="large" {...addressType} />
+                        <Select size="middle" {...addressType} />
                       </Form.Item>
                     </Col>
                     <Col span={8} pull={8}>
                       <Button
                         danger
-                        size="large"
+                        size="middle"
                         type="text"
                         onClick={() => {
                           remove(field.name);
@@ -528,14 +565,14 @@ export const PrimaryContactForm = () => {
             <Typography.Text strong>Contact Email </Typography.Text>
           </Col>
           <Col span={8}>
-            <Form.Item label="Email Address" name="gmail">
-              <Input size="large" />
+            <Form.Item label="Email Address" name="primary_email">
+              <Input size="middle" />
             </Form.Item>
           </Col>
         </Row>
 
         <Row>
-          <Form.List name="email">
+          <Form.List name="alternative_email">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -550,15 +587,18 @@ export const PrimaryContactForm = () => {
                     </Col>
 
                     <Col span={20}>
-                      <Form.Item label="Email Address" name="email">
-                        <Input size="large" />
+                      <Form.Item
+                        label="Email Address"
+                        name={[field.name, "alternative_email"]}
+                      >
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
 
                     <Col span={4}>
                       <Button
                         danger
-                        size="large"
+                        size="middle"
                         type="text"
                         onClick={() => {
                           remove(field.name);
@@ -591,19 +631,19 @@ export const PrimaryContactForm = () => {
             <Typography.Text strong>Phone</Typography.Text>
           </Col>
           <Col span={8}>
-            <Form.Item label="Phone Number" name="phonenumber">
-              <Input size="large" />
+            <Form.Item label="Phone Number" name="phone_number">
+              <Input size="middle" />
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Select Type" name={"type"}>
-              <Select size="large" placeholder="select" {...contactType} />
+            <Form.Item label="Select Type" name={"phone_number_type"}>
+              <Select size="middle" placeholder="select" {...contactType} />
             </Form.Item>
           </Col>
         </Row>
 
         <Row>
-          <Form.List name="contactnumber">
+          <Form.List name="alternative_phone_number">
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field) => (
@@ -618,15 +658,15 @@ export const PrimaryContactForm = () => {
                     </Col>
 
                     <Col span={20}>
-                      <Form.Item label="Phone" name="phonenumber">
-                        <Input size="large" />
+                      <Form.Item label="Phone" name={[field.name, "phone"]}>
+                        <Input size="middle" />
                       </Form.Item>
                     </Col>
 
                     <Col span={4}>
                       <Button
                         danger
-                        size="large"
+                        size="middle"
                         type="text"
                         onClick={() => {
                           remove(field.name);
@@ -652,6 +692,14 @@ export const PrimaryContactForm = () => {
               </div>
             )}
           </Form.List>
+        </Row>
+
+        <Row justify={"end"}>
+          <Col>
+            <Button type="primary" size="middle" htmlType="submit">
+              Submit
+            </Button>
+          </Col>
         </Row>
       </Form>
     </Flex>
