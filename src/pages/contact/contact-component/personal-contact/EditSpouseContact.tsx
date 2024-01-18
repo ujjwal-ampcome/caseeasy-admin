@@ -19,12 +19,12 @@ import { ISpouseContact } from "../../../../components/interfaces";
 import "./../../styles.less";
 import dayjs from "dayjs";
 
-export const EditSpouseContact: React.FC<ISpouseContact> = () => {
+export const EditSpouseContact: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { id } = useParsed();
 
   const { data: SpouseID } = useOne({
-    resource: "Contacts",
+    resource: "contacts",
     id,
     meta: {
       fields: [
@@ -37,7 +37,7 @@ export const EditSpouseContact: React.FC<ISpouseContact> = () => {
   });
 
   const { formProps, onFinish } = useForm<ISpouseContact>({
-    resource: "Spouse",
+    resource: "spouse",
     id: SpouseID?.data?.Contact_Spouse?.[0]?.id,
     action: "edit",
     meta: {
@@ -79,7 +79,7 @@ export const EditSpouseContact: React.FC<ISpouseContact> = () => {
   });
 
   const { data } = useList({
-    resource: "Job_title",
+    resource: "job_title",
     meta: {
       fields: ["id", "title", "header", "noc", "skill"],
     },

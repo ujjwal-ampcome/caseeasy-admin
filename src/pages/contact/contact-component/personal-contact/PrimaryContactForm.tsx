@@ -61,7 +61,7 @@ export const PrimaryContactForm: React.FC = () => {
   });
 
   const { data } = useList({
-    resource: "Job_title",
+    resource: "job_title",
     meta: {
       fields: ["id", "title", "header", "noc", "skill"],
     },
@@ -145,7 +145,7 @@ export const PrimaryContactForm: React.FC = () => {
 
   const handleSubmit = async (e: any) => {
     const contact = await createContact({
-      resource: "Contacts",
+      resource: "contacts",
       values: {
         ...e,
         alternative_address: e?.alternative_address,
