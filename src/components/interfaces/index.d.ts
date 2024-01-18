@@ -27,7 +27,6 @@ export interface IUploadDetails {
   size: string;
   btnName: string;
 }
-
 export interface ContactState {
   clientID: any;
   addClientID: (id: any) => void;

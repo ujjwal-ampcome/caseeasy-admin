@@ -116,7 +116,7 @@ function App() {
                     <Route
                       path="/primary-contact"
                       element={<PrimaryContact />}
-                    />               
+                    />
                     <Route path="/settings" element={<Settings />} />
                     <Route
                       path="/primary-contact/edit/:id"
