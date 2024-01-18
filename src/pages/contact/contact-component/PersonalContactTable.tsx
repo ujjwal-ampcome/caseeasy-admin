@@ -18,7 +18,7 @@ export const PersonalContactTable = () => {
   const { push } = useNavigation();
   const { mutate } = useUpdate();
   const { tableProps } = useTable({
-    resource: "Contacts",
+    resource: "contacts",
     meta: {
       fields: [
         "id",
@@ -154,7 +154,7 @@ export const PersonalContactTable = () => {
                       icon={<DeleteOutlined />}
                       onClick={async () =>
                         await mutate({
-                          resource: "Contacts",
+                          resource: "contacts",
                           id: record?.id,
                           values: {
                             active: false,

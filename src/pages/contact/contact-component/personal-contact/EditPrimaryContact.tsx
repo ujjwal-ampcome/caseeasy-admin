@@ -25,7 +25,7 @@ export const EditPrimaryContact: React.FC = () => {
   const [jobtitle, setJobTitle] = React.useState<string | undefined>();
   const { id } = useParsed();
   const { formProps, onFinish } = useForm<IPersonalContact>({
-    resource: "Contacts",
+    resource: "contacts",
     id: id,
     action: "edit",
     meta: {
@@ -99,7 +99,7 @@ export const EditPrimaryContact: React.FC = () => {
   });
 
   const { data } = useList({
-    resource: "Job_title",
+    resource: "job_title",
     meta: {
       fields: ["id", "title", "header", "noc", "skill"],
     },

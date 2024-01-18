@@ -43,7 +43,7 @@ export const SpouseContactForm: React.FC = () => {
   });
 
   const { data } = useList({
-    resource: "Job_title",
+    resource: "job_title",
     meta: {
       fields: ["id", "title", "header", "noc", "skill"],
     },
@@ -127,7 +127,7 @@ export const SpouseContactForm: React.FC = () => {
 
   const handleSubmit = async (e: any) => {
     const spouseinfo = await createspousecontact({
-      resource: "Spouse",
+      resource: "spouse",
       values: {
         ...e,
         contact_id: clientID,
