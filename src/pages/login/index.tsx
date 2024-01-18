@@ -4,22 +4,25 @@ import { useLogin } from "@refinedev/core";
 import {
   Col,
   Typography,
-  Row,
   Carousel,
   Input,
   Space,
   Button,
   Form,
   Modal,
-  Layout,
   Image,
+  Flex,
 } from "antd";
 import { ILoginForm } from "../../components/interfaces";
 import { Register } from "../register";
 import Login2 from "/img/login2.png";
-import Wincase from "/img/wincase.png";
+import immigration_blue from "/img/immigration_blue.jpg";
+import SmallPlane from "/img/small-plane.jpg";
+import TravelBg from "/img/travel-background.jpg";
 import ReCAPTCHA from "react-google-recaptcha";
+import wincaseImg from "/img/wincaseImg.png";
 import "./styles.less";
+import Paragraph from "antd/es/typography/Paragraph";
 
 const { Title, Text } = Typography;
 
@@ -28,8 +31,8 @@ export const Login: React.FC = () => {
   const [form] = Form.useForm<ILoginForm>();
   const { mutate: login } = useLogin<ILoginForm>();
   return (
-    <Layout>
-      <Row id="login">
+    <>
+      <Flex id="login">
         <Col
           xs={{ span: 0 }}
           sm={{ span: 0 }}
@@ -37,33 +40,39 @@ export const Login: React.FC = () => {
           xxl={{ span: 16 }}
           className="main-col-1"
         >
-          <Title level={2} className="main-col-1-title">
-            Canadian Immigration CRM software
-            <Title
-              level={4}
-              style={{ fontWeight: 400 }}
-              className="main-col-1-title"
-            >
-              For RCICs and Immigration Lawyers
-            </Title>
-          </Title>
+          <Typography.Text className="main-col-1-title">
+            Canadian Immigration CRM Software
+          </Typography.Text>
+          <Paragraph
+            style={{ fontWeight: 400, fontSize: "18px" }}
+            className="main-col-1-subTitle"
+          >
+            For RCICs and Immigration Lawyers
+          </Paragraph>
           <Carousel autoplay className="main-col-1-carousel">
-            <div>
-              <Image
-                src={Login2}
-                preview={false}
-                className="main-col-1-carousel-content"
-              />
-            </div>
-            <div>
-              <Image
-                src={Login2}
-                preview={false}
-                className="main-col-1-carousel-content"
-              />
-            </div>
+            <Image
+              src={TravelBg}
+              height={400}
+              width={700}
+              preview={false}
+              className="main-col-1-carousel-content"
+            />
+            <Image
+              src={immigration_blue}
+              height={400}
+              width={700}
+              preview={false}
+              className="main-col-1-carousel-content"
+            />
+            <Image
+              src={SmallPlane}
+              height={400}
+              width={700}
+              preview={false}
+              className="main-col-1-carousel-content"
+            />
           </Carousel>
-          <Text className="main-col-1-title">
+          <Text className="main-col-1-footer">
             &copy; 2023 CaseEasy by Ampcome Technologies Pvt. Ltd.
           </Text>
         </Col>
@@ -75,20 +84,17 @@ export const Login: React.FC = () => {
           xxl={{ span: 8 }}
           className="main-col-2"
         >
-          <Space
-            direction="vertical"
-            style={{ display: "flex", alignItems: "center" }}
-          >
+          <Space direction="vertical" style={{ display: "flex" }}>
             <Image
-              src={Wincase}
+              src={wincaseImg}
               alt="Wincase Logo"
               preview={false}
               width={280}
             />
           </Space>
-          <Title level={2} className="main-col-2-title">
+          <Typography.Title level={2} className="main-col-2-title">
             Login
-          </Title>
+          </Typography.Title>
           <Form<ILoginForm>
             layout="vertical"
             form={form}
@@ -141,6 +147,11 @@ export const Login: React.FC = () => {
                 console.log("recatcha triggered");
               }}
               size="normal"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             />
 
             <Button
@@ -154,10 +165,10 @@ export const Login: React.FC = () => {
             </Button>
           </Form>
         </Col>
-      </Row>
+      </Flex>
       <Modal {...modalProps} footer={null}>
         <Register />
       </Modal>
-    </Layout>
+    </>
   );
 };

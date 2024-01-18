@@ -13,7 +13,7 @@ export const Register: React.FC = () => {
     <Space direction="vertical" className="main-col">
       <Space direction="vertical" style={{ display: "flex" }}>
         <Title className="main-col-title">
-          caseeasy
+          wincase
           <Title level={5} className="main-col-title-2">
             2.0 Preview
           </Title>
