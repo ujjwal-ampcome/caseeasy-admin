@@ -10,12 +10,13 @@ import {
   EditOutlined,
   MailOutlined,
 } from "@ant-design/icons";
-import { useNavigation } from "@refinedev/core";
+import { useNavigation, useUpdate } from "@refinedev/core";
 
 dayjs.extend(relativeTime);
 
 export const PersonalContactTable = () => {
   const { push } = useNavigation();
+  const { mutate } = useUpdate();
   const { tableProps } = useTable({
     resource: "Contacts",
     meta: {
@@ -48,6 +49,16 @@ export const PersonalContactTable = () => {
         "primary_email",
         "created_at",
         "updated_at",
+        "active",
+      ],
+    },
+    filters: {
+      permanent: [
+        {
+          field: "active",
+          operator: "eq",
+          value: true,
+        },
       ],
     },
   });
@@ -138,7 +149,19 @@ export const PersonalContactTable = () => {
                     <Menu.Item key="3" icon={<CustomerServiceOutlined />}>
                       Convert to Client
                     </Menu.Item>
-                    <Menu.Item key="4" icon={<DeleteOutlined />}>
+                    <Menu.Item
+                      key="4"
+                      icon={<DeleteOutlined />}
+                      onClick={async () =>
+                        await mutate({
+                          resource: "Contacts",
+                          id: record?.id,
+                          values: {
+                            active: false,
+                          },
+                        })
+                      }
+                    >
                       Delete
                     </Menu.Item>
                   </Menu>
