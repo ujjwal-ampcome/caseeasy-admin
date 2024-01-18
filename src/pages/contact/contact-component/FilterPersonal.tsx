@@ -6,22 +6,22 @@ export const FilterPersonal: React.FC = () => {
   return (
     <Form form={form} layout="vertical">
       <Form.Item label="Name">
-        <Input size="large" placeholder="input placeholder" />
+        <Input size="middle" placeholder="input placeholder" />
       </Form.Item>
       <Form.Item label="Age Range">
-        <Select size="large" placeholder="Select placeholder" />
+        <Select size="middle" placeholder="Select placeholder" />
       </Form.Item>
       <Form.Item label="Job Title/NOC">
-        <Select size="large" placeholder="Select placeholder" />
+        <Select size="middle" placeholder="Select placeholder" />
       </Form.Item>
       <Form.Item label="Marital Status">
-        <Select size="large" placeholder="Select placeholder" />
+        <Select size="middle" placeholder="Select placeholder" />
       </Form.Item>
       <Form.Item label="Contact Type">
-        <Select size="large" placeholder="Select placeholder" />
+        <Select size="middle" placeholder="Select placeholder" />
       </Form.Item>
       <Form.Item label="Country of Residence">
-        <Select size="large" placeholder="Select placeholder" />
+        <Select size="middle" placeholder="Select placeholder" />
       </Form.Item>
       <Space direction="horizontal" style={{ display: "flex" }}>
         <Button type="primary" size="middle">
