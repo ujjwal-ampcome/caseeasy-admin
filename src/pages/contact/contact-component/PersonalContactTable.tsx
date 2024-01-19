@@ -83,11 +83,27 @@ export const PersonalContactTable = () => {
         },
       ],
     },
+    sorters: {
+      permanent: [
+        {
+          field: "first_name",
+          order: "asc",
+        },
+        {
+          field: "created_at",
+          order: "desc",
+        },
+        {
+          field: "updated_at",
+          order: "desc",
+        },
+      ],
+    },
   });
 
-  React.useEffect(() => {
-    console.log("residence-", residence);
-  }, [residence]);
+  // React.useEffect(() => {
+  //   console.log("residence-", residence);
+  // }, [residence]);
 
   return (
     <List>

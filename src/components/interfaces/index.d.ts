@@ -33,18 +33,27 @@ export interface IContactState {
 }
 
 export interface IFilterStore {
-  clientname: any;
-  agerange: any;
-  noc: any;
-  maritalstatus: any;
-  contacttype: any;
-  residence: any;
-  addClientName: (value: any) => void;
-  addAgeRange: (value: any) => void;
-  addNoc: (value: any) => void;
-  addMaritalStatus: (value: any) => void;
-  addContactType: (value: any) => void;
-  addResidence: (value: any) => void;
+  clientname: string;
+  agerange: string;
+  noc: string;
+  maritalstatus: string;
+  contacttype: string;
+  residence: string;
+  addClientName: (value: string) => void;
+  addAgeRange: (value: string) => void;
+  addNoc: (value: string) => void;
+  addMaritalStatus: (value: string) => void;
+  addContactType: (value: string) => void;
+  addResidence: (value: string) => void;
+}
+
+export interface ISortStore {
+  firstname: string;
+  createdat: string;
+  updatedat: string;
+  addFirstName: (value: string) => void;
+  addCreatedAt: (value: string) => void;
+  addUpdatedAt: (value: string) => void;
 }
 
 export interface IPersonalContact {

@@ -1,5 +1,9 @@
 import { create } from "zustand";
-import { IContactState, IFilterStore } from "./components/interfaces";
+import {
+  IContactState,
+  IFilterStore,
+  ISortStore,
+} from "./components/interfaces";
 
 export const useStore = create<IContactState>()((set) => ({
   clientID: 0,
@@ -24,4 +28,20 @@ export const filterStore = create<IFilterStore>()((set) => ({
     }),
 }));
 
-// export default useStore;
+export const sortStore = create<ISortStore>()((set) => ({
+  firstname: "",
+  createdat: "",
+  updatedat: "",
+  addFirstName: (value) =>
+    set({
+      firstname: value,
+    }),
+  addCreatedAt: (value) =>
+    set({
+      createdat: value,
+    }),
+  addUpdatedAt: (value) =>
+    set({
+      updatedat: value,
+    }),
+}));
