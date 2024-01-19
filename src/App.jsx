@@ -87,7 +87,7 @@ function App() {
                   },
                 ]}
                 options={{
-                  syncWithLocation: true,
+                  syncWithLocation: false,
                   warnWhenUnsavedChanges: false,
                   useNewQueryKeys: true,
                   projectId: "M03i44-8rx61Q-zwJbRA",

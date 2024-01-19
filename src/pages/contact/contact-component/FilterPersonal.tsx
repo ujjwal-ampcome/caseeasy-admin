@@ -152,6 +152,15 @@ export const FilterPersonal: React.FC = () => {
     addResidence(e?.residence);
   };
 
+  const handleClear = () => {
+    addClientName("");
+    addAgeRange("");
+    addNoc("");
+    addMaritalStatus("");
+    addContactType("");
+    addResidence("");
+  };
+
   return (
     <Form layout="vertical" onFinish={(e) => handleSubmit(e)}>
       <Form.Item label="Name" name={"clientname"}>
@@ -165,7 +174,6 @@ export const FilterPersonal: React.FC = () => {
           popupClassName="certain-category-search-dropdown"
           popupMatchSelectWidth={800}
           options={JobOptions}
-          size="middle"
         >
           <Input
             size="middle"
@@ -199,7 +207,9 @@ export const FilterPersonal: React.FC = () => {
         <Button type="primary" size="middle" htmlType="submit">
           Apply
         </Button>
-        <Button size="middle">Clear</Button>
+        <Button size="middle" onClick={handleClear}>
+          Clear
+        </Button>
       </Space>
     </Form>
   );

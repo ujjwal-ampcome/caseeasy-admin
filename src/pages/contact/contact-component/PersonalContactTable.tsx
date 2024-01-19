@@ -11,12 +11,14 @@ import {
   MailOutlined,
 } from "@ant-design/icons";
 import { useNavigation, useUpdate } from "@refinedev/core";
+import { filterStore } from "../../../store";
 
 dayjs.extend(relativeTime);
 
 export const PersonalContactTable = () => {
   const { push } = useNavigation();
   const { mutate } = useUpdate();
+  const { residence, maritalstatus, noc, clientname } = filterStore();
   const { tableProps } = useTable({
     resource: "contacts",
     meta: {
@@ -59,9 +61,33 @@ export const PersonalContactTable = () => {
           operator: "eq",
           value: true,
         },
+        {
+          field: "first_name",
+          operator: "contains",
+          value: `%${clientname ?? ""}%` || undefined,
+        },
+        {
+          field: "country_of_residence",
+          operator: "eq",
+          value: residence || undefined,
+        },
+        {
+          field: "marital_status",
+          operator: "eq",
+          value: maritalstatus || undefined,
+        },
+        {
+          field: "job_title",
+          operator: "contains",
+          value: noc || undefined,
+        },
       ],
     },
   });
+
+  React.useEffect(() => {
+    console.log("residence-", residence);
+  }, [residence]);
 
   return (
     <List>

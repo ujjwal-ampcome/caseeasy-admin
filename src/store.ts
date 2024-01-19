@@ -17,10 +17,11 @@ export const filterStore = create<IFilterStore>()((set) => ({
   addAgeRange: (value) => set({ agerange: value }),
   addNoc: (value) => set({ noc: value }),
   addMaritalStatus: (value) => set({ maritalstatus: value }),
-  addContactType: (value) => ({ contacttype: value }),
-  addResidence: (value) => ({
-    residence: value,
-  }),
+  addContactType: (value) => set({ contacttype: value }),
+  addResidence: (value) =>
+    set({
+      residence: value,
+    }),
 }));
 
 // export default useStore;
