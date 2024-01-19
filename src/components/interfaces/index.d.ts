@@ -27,9 +27,24 @@ export interface IUploadDetails {
   size: string;
   btnName: string;
 }
-export interface ContactState {
+export interface IContactState {
   clientID: any;
   addClientID: (id: any) => void;
+}
+
+export interface IFilterStore {
+  clientname: any;
+  agerange: any;
+  noc: any;
+  maritalstatus: any;
+  contacttype: any;
+  residence: any;
+  addClientName: (value: any) => void;
+  addAgeRange: (value: any) => void;
+  addNoc: (value: any) => void;
+  addMaritalStatus: (value: any) => void;
+  addContactType: (value: any) => void;
+  addResidence: (value: any) => void;
 }
 
 export interface IPersonalContact {
